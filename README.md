@@ -14,7 +14,9 @@ This project is a simple ecommerce applications for muslims, with user security 
 
 ## About
 
-Briefly describe what the project is about and its main features.
+Welcome to a safe and secure market space for Muslim women!
+
+Find your perfect fit: Explore a diverse range of modest clothing, accessories, beauty, and lifestyle essentials.
 
 ## Dependencies
 

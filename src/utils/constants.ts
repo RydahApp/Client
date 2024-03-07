@@ -1,8 +1,8 @@
 export const FONT_WEIGHT = {
-  light: "Roboto_300Light",
-  regular: "Roboto_400Regular",
-  medium: "Roboto_500Medium",
-  bold: "Roboto_700Bold",
+  light: "Inter_300Light",
+  regular: "Inter_400Regular",
+  medium: "Inter_500Medium",
+  bold: "Inter_700Bold",
 };
 
 export const COLORS = {
