@@ -6,7 +6,14 @@ export const FONT_WEIGHT = {
 };
 
 export const COLORS = {
-  primary: { main: "#6C63FF", light: "#F1E5FF" },
+  foundation: {
+    red: { 100: "#FFF7F7", 200: "#FFCCCC", 250: "#E6B8B8", 400: "#997A7A" },
+    light: "#F1E5FF",
+  },
+  primary: {
+    light: "#FFCCCC",
+    main: "#8D80F2",
+  },
   secondary: {
     light: "#8D80F273",
     main: "#8D80F2",

@@ -18,7 +18,9 @@ const VerifyCode = () => {
         <Text style={authstyles.forgotPasswordTitle}>Almost there</Text>
         <Text style={authstyles.forgotPasswordSubtitle}>
           Please enter the 6-digit code sent to your email
-          <Text style={{ color: COLORS.primary.main, fontWeight: "600" }}>
+          <Text
+            style={{ color: COLORS.foundation.red[200], fontWeight: "600" }}
+          >
             {" "}
             conabdullsalui@gmail.com{" "}
           </Text>{" "}

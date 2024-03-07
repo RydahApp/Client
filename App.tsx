@@ -1,9 +1,9 @@
 import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
 import {
   useFonts,
   Inter_900Black,
+  Inter_300Light,
   Inter_400Regular,
   Inter_500Medium,
   Inter_700Bold,
@@ -15,6 +15,7 @@ import Main from "@/navigation/main";
 
 export default function App() {
   let [fontsLoaded, fontError] = useFonts({
+    Inter_300Light,
     Inter_900Black,
     Inter_400Regular,
     Inter_500Medium,
