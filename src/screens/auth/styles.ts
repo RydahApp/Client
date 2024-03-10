@@ -3,6 +3,33 @@ import { hp, wp } from "@/utils/dimensions";
 import { StyleSheet } from "react-native";
 
 export const authstyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "white",
+    padding: hp(30),
+    gap: hp(20),
+  },
+  inputContainer: {
+    height: hp(50),
+    borderColor: "#D0D5DD",
+    borderWidth: 1,
+    borderRadius: wp(8),
+    paddingHorizontal: wp(10),
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: 5,
+  },
+  passwordContainer: {},
+  input: {
+    flex: 1,
+    height: "100%",
+  },
+  inputFormTitle: {
+    fontFamily: FONT_WEIGHT.medium,
+    fontSize: hp(12),
+    marginBottom: hp(8),
+  },
   forgotPasswordTextContainer: {
     margin: hp(20),
     marginTop: hp(40),
@@ -16,21 +43,5 @@ export const authstyles = StyleSheet.create({
   forgotPasswordSubtitle: {
     fontSize: hp(15),
     color: "gray",
-  },
-  input: {
-    width: "100%",
-    height: hp(50),
-    borderRadius: wp(8),
-    backgroundColor: "#C4C4C433",
-    paddingHorizontal: wp(10),
-  },
-  passwordContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  passwordInput: {
-    width: "100%",
-    height: "100%",
   },
 });

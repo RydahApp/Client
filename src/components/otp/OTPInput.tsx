@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import { hp, wp } from "@/utils/dimensions";
+import { FONT_WEIGHT } from "@/utils/constants";
 
 type OTPProps = {
   setPinReady: React.Dispatch<React.SetStateAction<boolean>>;
@@ -72,8 +73,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     gap: hp(16),
-    marginTop: hp(35),
-    marginBottom: hp(45),
+    marginTop: hp(25),
+    marginBottom: hp(20),
   },
   otpInput: {
     minWidth: "15%",
@@ -81,13 +82,13 @@ const styles = StyleSheet.create({
     borderColor: "grey",
     borderRadius: hp(15),
     backgroundColor: "white",
-    width: wp(53),
-    height: wp(54),
+    width: wp(57),
+    height: wp(59),
     justifyContent: "center",
   },
   otpInputText: {
     fontSize: hp(22),
-    fontWeight: "700",
+    fontFamily: FONT_WEIGHT.bold,
     textAlign: "center",
   },
   hiddenTextInput: {

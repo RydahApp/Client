@@ -6,6 +6,7 @@ import {
   Inter_300Light,
   Inter_400Regular,
   Inter_500Medium,
+  Inter_600SemiBold,
   Inter_700Bold,
 } from "@expo-google-fonts/inter";
 import { NavigationContainer } from "@react-navigation/native";
@@ -19,6 +20,7 @@ export default function App() {
     Inter_900Black,
     Inter_400Regular,
     Inter_500Medium,
+    Inter_600SemiBold,
     Inter_700Bold,
   });
 

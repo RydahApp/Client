@@ -10,8 +10,10 @@ import React from "react";
 import { hp } from "@/utils/dimensions";
 import { FONT_WEIGHT } from "@/utils/constants";
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const OnBoarding = () => {
+  const navigation = useNavigation<AuthScreenNavigationProp>();
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -63,6 +65,7 @@ const OnBoarding = () => {
               alignItems: "center",
               gap: 5,
             }}
+            onPress={() => navigation.navigate("Login")}
           >
             <Text style={{ fontFamily: FONT_WEIGHT.medium }}>Get started</Text>
             <AntDesign name="arrowright" size={15} color="black" />

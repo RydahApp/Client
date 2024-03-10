@@ -1,64 +1,90 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+} from "react-native";
 import React, { useState } from "react";
 import OTPInputField from "@/components/otp/OTPInput";
 import { hp, wp } from "@/utils/dimensions";
 import { useNavigation } from "@react-navigation/native";
 import { COLORS, FONT_WEIGHT } from "@/utils/constants";
 import { authstyles } from "./styles";
+import AppButton from "@/components/button";
 
 const VerifyCode = () => {
   const [code, setCode] = useState("");
   const [pinReady, setPinReady] = useState(false);
-  const MAX_CODE_LENGHT = 5;
+  const MAX_CODE_LENGHT = 4;
   const navigation = useNavigation<AuthScreenNavigationProp>();
 
   return (
-    <View style={{ flex: 1 }}>
-      <View style={authstyles.forgotPasswordTextContainer}>
-        <Text style={authstyles.forgotPasswordTitle}>Almost there</Text>
-        <Text style={authstyles.forgotPasswordSubtitle}>
-          Please enter the 6-digit code sent to your email
-          <Text
-            style={{ color: COLORS.foundation.red[200], fontWeight: "600" }}
-          >
-            {" "}
-            conabdullsalui@gmail.com{" "}
-          </Text>{" "}
-          for verification.
-        </Text>
-      </View>
-      <View
-        style={{
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <OTPInputField
-          setPinReady={setPinReady}
-          code={code}
-          setCode={setCode}
-          maxLength={MAX_CODE_LENGHT}
-        />
-      </View>
-      <View style={{ gap: hp(40), alignItems: "center" }}>
-        <TouchableOpacity
-          style={styles.cta}
-          onPress={() => navigation.navigate("Home")}
-        >
-          <Text style={{ color: "white" }}>Verify</Text>
-        </TouchableOpacity>
-        <View style={{ gap: 5, alignItems: "center" }}>
-          <View style={{ flexDirection: "row", gap: 5 }}>
-            <Text style={{ fontWeight: "600" }}>Didn’t receive any code?</Text>
-            <Text>Resend Again</Text>
-          </View>
-
-          <Text style={{ color: "#00000", opacity: 0.5 }}>
-            Request new code in 00:30s
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={authstyles.container}>
+        <Image source={require("assets/logo_pink.png")} />
+        <View>
+          <Text style={{ fontFamily: FONT_WEIGHT.regular, fontSize: hp(16) }}>
+            Check your mail!
+          </Text>
+          <Text style={{ fontFamily: FONT_WEIGHT.medium, fontSize: hp(31) }}>
+            We’ve sent you a Mail
           </Text>
         </View>
+        <View
+          style={{
+            // alignItems: "center",
+            // justifyContent: "center",
+            marginTop: hp(20),
+          }}
+        >
+          <Text style={{ fontFamily: FONT_WEIGHT.medium, fontSize: hp(12) }}>
+            Enter the 4-digit code we sent to you to verify
+          </Text>
+          <OTPInputField
+            setPinReady={setPinReady}
+            code={code}
+            setCode={setCode}
+            maxLength={MAX_CODE_LENGHT}
+          />
+        </View>
+        <View style={{ gap: hp(30), alignItems: "center" }}>
+          <AppButton
+            content="Verify"
+            onPress={() => navigation.navigate("Verify")}
+            textStyle={{ fontFamily: FONT_WEIGHT.medium }}
+            otherStyles={{ width: "100%", paddingVertical: hp(16) }}
+          />
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 10,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Text> Didn’t receive any code?</Text>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("ForgotPassword")}
+              style={{
+                borderBottomWidth: 1,
+                borderBottomColor: COLORS.foundation.red[400],
+              }}
+            >
+              <Text
+                style={{
+                  color: COLORS.foundation.red[400],
+                  fontFamily: FONT_WEIGHT.semibold,
+                }}
+              >
+                Resend Again
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

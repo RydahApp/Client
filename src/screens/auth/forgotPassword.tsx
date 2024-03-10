@@ -5,13 +5,19 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from "react-native";
 import React, { useState } from "react";
 import { hp, wp } from "@/utils/dimensions";
 import { useNavigation } from "@react-navigation/native";
-import { COLORS } from "@/utils/constants";
+import { COLORS, FONT_WEIGHT } from "@/utils/constants";
 import { authstyles } from "./styles";
 import { MaterialCommunityIcons, FontAwesome6 } from "@expo/vector-icons";
+import AppButton from "@/components/button";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -19,50 +25,67 @@ const ForgotPassword = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View style={authstyles.forgotPasswordTextContainer}>
-        <Text style={authstyles.forgotPasswordTitle}>Forgot Password</Text>
-        <Text style={authstyles.forgotPasswordSubtitle}>
-          Please enter your e-mail to reset password
-        </Text>
-      </View>
-      <View style={{ paddingHorizontal: 20 }}>
-        <View style={[authstyles.input, authstyles.passwordContainer]}>
-          <TextInput
-            style={{
-              height: "100%",
-            }}
-            placeholder="Enter your email"
-            onChangeText={setEmail}
-          />
-          <MaterialCommunityIcons
-            name={"email-outline"}
-            size={22}
-            color="#333333c5"
-          />
-        </View>
-      </View>
-
-      <View style={{ gap: hp(40), alignItems: "center" }}>
-        <TouchableOpacity
-          style={styles.cta}
-          onPress={() => navigation.navigate("Home")}
-        >
-          <Text style={{ color: "white" }}>Reset Password</Text>
-        </TouchableOpacity>
-      </View>
-      <View
-        style={{
-          backgroundColor: COLORS.primary.main,
-          padding: 5,
-          borderRadius: 100,
-          height: hp(50),
-          width: hp(50),
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+      <KeyboardAvoidingView
+        style={{ flex: 1, width: "100%" }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
-        <FontAwesome6 name="less-than" size={24} color="white" />
-      </View>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={authstyles.container}>
+            <Image source={require("assets/logo_pink.png")} />
+            <View>
+              <Text
+                style={{ fontFamily: FONT_WEIGHT.regular, fontSize: hp(16) }}
+              >
+                Ready to gain access back?
+              </Text>
+              <Text
+                style={{ fontFamily: FONT_WEIGHT.medium, fontSize: hp(31) }}
+              >
+                Reset password
+              </Text>
+            </View>
+            <Text
+              style={{
+                color: COLORS.foundation.red[400],
+                fontSize: hp(13),
+                marginVertical: hp(20),
+              }}
+            >
+              Enter your email address below, and we'll send you a link to reset
+              your password. Once you've received it, simply follow the
+              instructions in the email to set up a new password and regain
+              access to your account.
+            </Text>
+            <View>
+              <Text style={authstyles.inputFormTitle}>Email</Text>
+              <View style={[authstyles.inputContainer]}>
+                <MaterialCommunityIcons
+                  name="email-outline"
+                  size={20}
+                  color="black"
+                />
+                <TextInput
+                  style={authstyles.input}
+                  placeholder="Email address"
+                  // value={fullName}
+                />
+              </View>
+              {/* {errors.fullname && (
+              <HelperText isError={true} text={errors.fullname} />
+            )} */}
+            </View>
+
+            <View style={{ gap: hp(40), alignItems: "center" }}>
+              <AppButton
+                content="Reset password"
+                onPress={() => null}
+                textStyle={{ fontFamily: FONT_WEIGHT.medium }}
+                otherStyles={{ width: "100%", paddingVertical: hp(16) }}
+              />
+            </View>
+          </View>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
