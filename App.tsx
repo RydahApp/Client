@@ -13,6 +13,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import { AuthProvider } from "@/context/authContext";
 import Main from "@/navigation/main";
+import ProfileStack from "@/navigation/profile";
 
 export default function App() {
   let [fontsLoaded, fontError] = useFonts({
@@ -30,7 +31,8 @@ export default function App() {
   return (
     <AuthProvider>
       <NavigationContainer>
-        <Main />
+        {/* <Main /> */}
+        <ProfileStack />
         <StatusBar style="auto" />
       </NavigationContainer>
     </AuthProvider>
