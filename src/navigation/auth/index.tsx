@@ -6,6 +6,8 @@ import ForgotPassword from "@/screens/auth/forgotPassword";
 import OnBoarding from "@/screens/onBoarding";
 import { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import SetPassword from "@/screens/auth/setPassword";
+import SetSuccess from "@/screens/auth/setSuccess";
 
 const Stack = createStackNavigator<AuthStackNavigatorParamList>();
 
@@ -31,6 +33,8 @@ const AuthStack = () => {
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="Verify" component={VerifyCode} />
+      <Stack.Screen name="SetPassword" component={SetPassword} />
+      <Stack.Screen name="SetSuccess" component={SetSuccess} />
     </Stack.Navigator>
   );
 };

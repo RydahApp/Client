@@ -78,7 +78,7 @@ const ForgotPassword = () => {
             <View style={{ gap: hp(40), alignItems: "center" }}>
               <AppButton
                 content="Reset password"
-                onPress={() => null}
+                onPress={() => navigation.navigate("SetPassword")}
                 textStyle={{ fontFamily: FONT_WEIGHT.medium }}
                 otherStyles={{ width: "100%", paddingVertical: hp(16) }}
               />

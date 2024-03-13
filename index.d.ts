@@ -8,6 +8,8 @@ declare type AuthStackNavigatorParamList = {
   Verify: { token: string; email: string };
   ForgotPassword: undefined;
   PinVerification: { token: string; email: string };
+  SetPassword: undefined;
+  SetSuccess: undefined;
 };
 
 declare type RootStackParamList = {
