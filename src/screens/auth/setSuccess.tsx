@@ -3,19 +3,28 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/AntDesign";
+import { useNavigation } from "@react-navigation/native";
 
 export default function SetSuccessPage() {
+  const navigation = useNavigation<AuthScreenNavigationProp>();
+
+  const handlePress = () => {
+    navigation.navigate("Login");
+  };
+
   return (
     <View style={styles.container}>
       <View style={{ gap: hp(15), marginTop: hp(200) }}>
         <Text
           style={{ fontWeight: "400", fontSize: hp(16), textAlign: "center" }}
         >
-          Password reset successful{" "}
+          Password reset successful
         </Text>
       </View>
       <TouchableOpacity style={styles.button}>
-        <Text style={{ fontWeight: "600" }}>Proceed to Login</Text>
+        <Text style={{ fontWeight: "600" }} onPress={handlePress}>
+          Proceed to Login
+        </Text>
         <Icon name="arrowright" size={15} />
       </TouchableOpacity>
     </View>
