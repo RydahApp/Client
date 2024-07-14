@@ -4,13 +4,16 @@ This project is a simple ecommerce applications for muslims, with user security 
 
 ## Table of Contents
 
-- [Prerequisites](#Prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Folder Structure](#folder-structure)
-- [Dependencies](#dependencies)
-- [Contributing](#contributing)
-- [License](#license)
+- [Rydah Ecommerce App Project](#rydah-ecommerce-app-project)
+  - [Table of Contents](#table-of-contents)
+  - [About](#about)
+  - [Dependencies](#dependencies)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Running the App](#running-the-app)
+    - [Folder Structure](#folder-structure)
+    - [Contributing](#contributing)
 
 ## About
 
