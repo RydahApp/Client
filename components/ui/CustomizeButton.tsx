@@ -1,6 +1,6 @@
 import { icons } from "@/constants";
 import { ReactNode } from "react";
-import { TouchableOpacity, Image, View } from "react-native";
+import { TouchableOpacity, Image, View, Text } from "react-native";
 
 type CustomizeBtn = {
   title: ReactNode;
@@ -21,6 +21,7 @@ const CustomButton: React.FC<CustomizeBtn> = ({
     <TouchableOpacity
       onPress={handlePress}
       activeOpacity={0.7}
+      accessibilityRole="button"
       className={`rounded-lg min-h-[36px] flex-row space-x-2 justify-center items-center ${containerStyles} ${
         isLoading || disabled ? "opacity-50 cursor-not-allowed" : ""
       }`}
@@ -31,9 +32,12 @@ const CustomButton: React.FC<CustomizeBtn> = ({
           source={icons.whiteLoadingIcon}
           resizeMode="cover"
           className="w-6 h-6"
+          accessibilityRole="image"
         />
       )}
-      <View className="w-fit">{title}</View>
+      <View className="w-fit">
+        <Text>{title}</Text>
+      </View>
     </TouchableOpacity>
   );
 };
