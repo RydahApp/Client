@@ -3,7 +3,8 @@ import { ReactNode } from "react";
 import { TouchableOpacity, Image, View, Text } from "react-native";
 
 type CustomizeBtn = {
-  title: ReactNode;
+  title: string | ReactNode;
+  titleStyle?: string | ReactNode;
   handlePress?: () => void;
   containerStyles: string;
   isLoading?: boolean;
@@ -12,6 +13,7 @@ type CustomizeBtn = {
 
 const CustomButton: React.FC<CustomizeBtn> = ({
   title,
+  titleStyle,
   handlePress,
   containerStyles,
   isLoading,
@@ -36,7 +38,7 @@ const CustomButton: React.FC<CustomizeBtn> = ({
         />
       )}
       <View className="w-fit">
-        <Text>{title}</Text>
+        <Text className={`${titleStyle}`}>{title}</Text>
       </View>
     </TouchableOpacity>
   );

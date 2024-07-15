@@ -1,6 +1,7 @@
 const appleIcon = require("@/assets/icons/appleIcon.png");
 const cartIcon = require("@/assets/icons/cartIcon.png");
 const checkIcon = require("@/assets/icons/checkIcon.png");
+const eyeIcon = require("@/assets/icons/eyeIcon.png");
 const eyeSlashIcon = require("@/assets/icons/eyeSlashIcon.png");
 const googleIcon = require("@/assets/icons/googleIcon.png");
 const homeIcon = require("@/assets/icons/homeIcon.png");
@@ -14,6 +15,7 @@ export default {
   appleIcon,
   cartIcon,
   checkIcon,
+  eyeIcon,
   eyeSlashIcon,
   googleIcon,
   homeIcon,

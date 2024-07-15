@@ -6,3 +6,12 @@ export interface onBoardType {
   title: string;
   subtitle: string;
 }
+
+export interface authFormValueType {
+  email: string;
+  password: string;
+}
+
+export interface otpFormValueType {
+  otp_code: string;
+}

@@ -2,7 +2,7 @@ import { CustomButton } from "@/components";
 import { onBoardingSlides } from "@/constants/data";
 import useFirstStore from "@/store";
 import { onBoardType } from "@/types";
-import { AntDesign, FontAwesome6 } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useRef, useState } from "react";
@@ -91,7 +91,7 @@ const OnboardingScreen = () => {
                   <Text>Back</Text>
                 </TouchableOpacity>
                 <CustomButton
-                  handlePress={() => goToNextSlide()}
+                  handlePress={() => router.push("/register")}
                   title={
                     <View className="flex-row items-end justify-center space-x-2">
                       <Text className="font-medium">Get started</Text>
