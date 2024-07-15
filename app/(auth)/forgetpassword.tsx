@@ -10,7 +10,7 @@ import { useFormik } from "formik";
 import { router } from "expo-router";
 import { forgetFormValueType } from "@/types";
 import Toast from "react-native-toast-message";
-import { Entypo } from "@expo/vector-icons";
+import { Entypo, MaterialIcons } from "@expo/vector-icons";
 
 const ForgetPasswordScreen = () => {
   const initialValues: forgetFormValueType = {
@@ -87,7 +87,10 @@ const ForgetPasswordScreen = () => {
               </View>
             </View>
             {touched.email && errors.email ? (
-              <Text style={{ color: "red" }}>{errors.email}</Text>
+              <View className="flex-row items-center space-x-2">
+                <MaterialIcons name="error-outline" size={16} color="red" />
+                <Text style={{ color: "red" }}>{errors.email}</Text>
+              </View>
             ) : null}
 
             <CustomButton

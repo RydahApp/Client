@@ -10,6 +10,7 @@ import { router } from "expo-router";
 import Toast from "react-native-toast-message";
 import { personalFormSchema } from "@/schema";
 import { personalFormValueType } from "@/types";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const ProfileDetailFillScreen = () => {
   const initialValues: personalFormValueType = {
@@ -72,7 +73,10 @@ const ProfileDetailFillScreen = () => {
               }`}
             />
             {touched.first_name && errors.first_name ? (
-              <Text style={{ color: "red" }}>{errors.first_name}</Text>
+              <View className="flex-row items-center space-x-2">
+                <MaterialIcons name="error-outline" size={16} color="red" />
+                <Text style={{ color: "red" }}>{errors.first_name}</Text>
+              </View>
             ) : null}
             <FormField
               title={
@@ -91,7 +95,10 @@ const ProfileDetailFillScreen = () => {
               }`}
             />
             {touched.last_name && errors.last_name ? (
-              <Text style={{ color: "red" }}>{errors.last_name}</Text>
+              <View className="flex-row items-center space-x-2">
+                <MaterialIcons name="error-outline" size={16} color="red" />
+                <Text style={{ color: "red" }}>{errors.last_name}</Text>
+              </View>
             ) : null}
             <FormField
               title={
@@ -108,7 +115,10 @@ const ProfileDetailFillScreen = () => {
               }`}
             />
             {touched.username && errors.username ? (
-              <Text style={{ color: "red" }}>{errors.username}</Text>
+              <View className="flex-row items-center space-x-2">
+                <MaterialIcons name="error-outline" size={16} color="red" />
+                <Text style={{ color: "red" }}>{errors.username}</Text>
+              </View>
             ) : null}
             <FormField
               title={
@@ -130,7 +140,10 @@ const ProfileDetailFillScreen = () => {
               }`}
             />
             {touched.mobile_number && errors.mobile_number ? (
-              <Text style={{ color: "red" }}>{errors.mobile_number}</Text>
+              <View className="flex-row items-center space-x-2">
+                <MaterialIcons name="error-outline" size={16} color="red" />
+                <Text style={{ color: "red" }}>{errors.mobile_number}</Text>
+              </View>
             ) : null}
             <FormField
               title={
@@ -148,7 +161,10 @@ const ProfileDetailFillScreen = () => {
               }`}
             />
             {touched.email && errors.email ? (
-              <Text style={{ color: "red" }}>{errors.email}</Text>
+              <View className="flex-row items-center space-x-2">
+                <MaterialIcons name="error-outline" size={16} color="red" />
+                <Text style={{ color: "red" }}>{errors.email}</Text>
+              </View>
             ) : null}
             <FormField
               title={
@@ -165,7 +181,10 @@ const ProfileDetailFillScreen = () => {
               }`}
             />
             {touched.location && errors.location ? (
-              <Text style={{ color: "red" }}>{errors.location}</Text>
+              <View className="flex-row items-center space-x-2">
+                <MaterialIcons name="error-outline" size={16} color="red" />
+                <Text style={{ color: "red" }}>{errors.location}</Text>
+              </View>
             ) : null}
             <CustomButton
               title="Submit"

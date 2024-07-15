@@ -10,6 +10,7 @@ import { useFormik } from "formik";
 import { router } from "expo-router";
 import { authFormValueType } from "@/types";
 import Toast from "react-native-toast-message";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const LoginScreen = () => {
   const initialValues: authFormValueType = {
@@ -51,7 +52,7 @@ const LoginScreen = () => {
         <View className="w-full flex-col items-start justify-start space-y-4">
           <Topheader subtitle="Already have an account?" title="Log in " />
           <View className="w-full flex-col space-y-2 items-start justify-start">
-            <View className="relative w-full">
+          <View className="relative w-full">
               <FormField
                 title={
                   <Text className="text-sm font-medium text-black">Email</Text>
@@ -76,7 +77,10 @@ const LoginScreen = () => {
               </View>
             </View>
             {touched.email && errors.email ? (
-              <Text style={{ color: "red" }}>{errors.email}</Text>
+              <View className="flex-row items-center space-x-2">
+                <MaterialIcons name="error-outline" size={16} color="red" />
+                <Text style={{ color: "red" }}>{errors.email}</Text>
+              </View>
             ) : null}
             <View className="relative w-full">
               <FormField
@@ -105,7 +109,10 @@ const LoginScreen = () => {
               </View>
             </View>
             {touched.password && errors.password ? (
-              <Text style={{ color: "red" }}>{errors.password}</Text>
+              <View className="flex-row items-center space-x-2">
+                <MaterialIcons name="error-outline" size={16} color="red" />
+                <Text style={{ color: "red" }}>{errors.password}</Text>
+              </View>
             ) : null}
             <View className="flex-row items-center justify-start space-x-1 py-3">
               <Text className="text-sm font-normal text-black">
