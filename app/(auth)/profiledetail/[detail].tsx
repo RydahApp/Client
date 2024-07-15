@@ -169,7 +169,7 @@ const ProfileDetailFillScreen = () => {
             ) : null}
             <CustomButton
               title="Submit"
-              containerStyles="bg-primary mt-3 w-full py-3"
+              containerStyles="bg-primary mt-6 w-full py-3"
               titleStyle="text-base font-medium text-black"
               isLoading={isSubmitting}
               handlePress={handleSubmit}

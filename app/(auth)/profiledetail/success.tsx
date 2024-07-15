@@ -12,7 +12,7 @@ const ProfileSuccessScreen = () => {
       <View className="w-[229px] h-[229px]" />
       <View className="flex-col items-center justify-center w-full">
         <Text className="text-base text-center font-medium text-black mb-3">
-          Personal details submission succesful. You can visit profile to check
+          Personal details submission succesful.
         </Text>
         <Text className="text-base text-center font-medium text-black mb-3">
           You can visit profile to check to edit

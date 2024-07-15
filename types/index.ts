@@ -24,3 +24,7 @@ export interface personalFormValueType {
   email: string;
   location: string;
 }
+
+export interface forgetFormValueType {
+  email: string;
+}

@@ -3,13 +3,10 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView } from "react-native";
 import { CustomButton, Topheader } from "@/components";
-import { Image } from "react-native";
-import { icons } from "@/constants";
-import { authFormSchema, otpVerifySchema } from "@/schema";
+import {  otpVerifySchema } from "@/schema";
 import { useFormik } from "formik";
 import { router, useLocalSearchParams } from "expo-router";
-import { authFormValueType, otpFormValueType } from "@/types";
-import Toast from "react-native-toast-message";
+import {otpFormValueType } from "@/types";
 import {
   CodeField,
   Cursor,

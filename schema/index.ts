@@ -13,6 +13,10 @@ export const otpVerifySchema = yup.object().shape({
   otp_code: yup.string().required("Required"),
 });
 
+export const forgetSchema = yup.object().shape({
+  email: yup.string().email("Invalid email address").required("Required"),
+});
+
 export const personalFormSchema = yup.object().shape({
   first_name: yup.string().required("Required"),
   last_name: yup.string().required("Required"),
