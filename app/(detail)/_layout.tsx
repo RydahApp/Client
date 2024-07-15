@@ -1,11 +1,14 @@
-import { View, Text } from "react-native";
-import React from "react";
+import { Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 
 const DetailLayout = () => {
   return (
-    <View>
-      <Text>DetailLayout</Text>
-    </View>
+    <>
+      <Stack>
+        <Stack.Screen name="product/[slug]" options={{ headerShown: false }} />
+      </Stack>
+      <StatusBar backgroundColor="#fff" style="dark" />
+    </>
   );
 };
 

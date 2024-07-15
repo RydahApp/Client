@@ -33,3 +33,11 @@ export interface resetFormValueType {
   password: string;
   confirm_password?: string;
 }
+
+export interface Product {
+  id: string;
+  product_image: ImageSourcePropType | undefined;
+  title: string;
+  category: string;
+  price: number;
+}

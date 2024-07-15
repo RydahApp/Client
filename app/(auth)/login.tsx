@@ -11,8 +11,10 @@ import { router } from "expo-router";
 import { authFormValueType } from "@/types";
 import Toast from "react-native-toast-message";
 import { MaterialIcons } from "@expo/vector-icons";
+import useFirstStore from "@/store";
 
 const LoginScreen = () => {
+  const { setIsAppFirstLaunched } = useFirstStore();
   const initialValues: authFormValueType = {
     email: "",
     password: "",
@@ -26,7 +28,7 @@ const LoginScreen = () => {
       position: "bottom",
     });
     router.replace(`/home`);
-
+    setIsAppFirstLaunched(true);
     action.resetForm();
   };
 
@@ -52,7 +54,7 @@ const LoginScreen = () => {
         <View className="w-full flex-col items-start justify-start space-y-4">
           <Topheader subtitle="Already have an account?" title="Log in " />
           <View className="w-full flex-col space-y-2 items-start justify-start">
-          <View className="relative w-full">
+            <View className="relative w-full">
               <FormField
                 title={
                   <Text className="text-sm font-medium text-black">Email</Text>
