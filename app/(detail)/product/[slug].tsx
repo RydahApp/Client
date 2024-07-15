@@ -1,5 +1,5 @@
-import { View, Text, ScrollView } from "react-native";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { View, Text, ScrollView, Platform, UIManager } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image } from "react-native";
@@ -7,13 +7,27 @@ import { shopData } from "@/constants/data";
 import { TouchableOpacity } from "react-native";
 import { AntDesign, Entypo, Feather, FontAwesome } from "@expo/vector-icons";
 import { Fee, formatNGNCurrency } from "@/helpers";
-import { CustomButton, CustomizeSwitch } from "@/components";
+import { CustomButton, CustomizeSwitch, StarRate } from "@/components";
 import { icons } from "@/constants";
+import { LayoutAnimation } from "react-native";
+
+if (
+  Platform.OS === "android" &&
+  UIManager.setLayoutAnimationEnabledExperimental
+) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
 const ProductdetailScreen = () => {
   const { slug } = useLocalSearchParams<{ slug?: string }>();
   const [count, setCount] = useState(1);
   const [showFee, setShowFee] = useState(true);
+  const [dropDown, setDropDown] = useState({
+    description: true,
+    rate: false,
+  });
+  const descriptionRef = useRef<View>(null);
+  const scrollViewRef = useRef<ScrollView>(null);
 
   const data = shopData.find((item) => item.id === slug);
 
@@ -29,11 +43,30 @@ const ProductdetailScreen = () => {
     setCount(count + 1);
   };
 
+  const toggleDropdown = (key: keyof typeof dropDown) => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    setDropDown((prevState) => ({
+      ...prevState,
+      [key]: !prevState[key],
+    }));
+
+    if (!dropDown[key]) {
+      descriptionRef.current?.measureLayout(
+        scrollViewRef.current as any,
+        (x, y) => {
+          scrollViewRef.current?.scrollTo({ y, animated: true });
+        },
+        () => {}
+      );
+    }
+  };
+
   const totalPrice = data.price + Fee;
 
   return (
     <SafeAreaView className="bg-white flex-1">
       <ScrollView
+        ref={scrollViewRef}
         contentContainerStyle={{
           paddingBottom: 15,
         }}
@@ -48,12 +81,7 @@ const ProductdetailScreen = () => {
             onPress={() => router.back()}
             className="absolute top-4 left-4"
           >
-            <Entypo
-              name="chevron-thin-left"
-              size={24}
-              color="white"
-              className=""
-            />
+            <Entypo name="chevron-thin-left" size={24} color="white" />
           </TouchableOpacity>
         </View>
         <View className="w-full py-5 px-5 flex-col items-start justify-start space-y-6">
@@ -117,19 +145,104 @@ const ProductdetailScreen = () => {
               </Text>
             </View>
           </View>
-          <View className="w-full flex-col space-y-4 items-center justify-center">
+          <View className="w-full">
             <CustomButton
               handlePress={() => router.push(`/home`)}
               title={
-                <View className="flex-row items-end justify-center space-x-2 w-full">
-                  <Image source={icons.buyCheckIcon} alt="buy icon" />
+                <View className="flex-row items-center justify-center space-x-2 w-full">
+                  <Image
+                    source={icons.buyCheckIcon}
+                    alt="buy icon"
+                    resizeMode="contain"
+                  />
                   <Text className="text-base text-black font-medium">
                     Buy now
                   </Text>
                 </View>
               }
-              containerStyles="bg-primary py-3 w-full"
+              containerStyles="bg-primary py-3 mb-3 w-full"
             />
+            <CustomButton
+              handlePress={() => router.push(`/home`)}
+              title={
+                <View className="flex-row items-center justify-center space-x-2 w-full">
+                  <Image
+                    source={icons.offerIcon}
+                    alt="offer icon"
+                    resizeMode="contain"
+                  />
+                  <Text className="text-base text-black font-medium">
+                    Make an offer
+                  </Text>
+                </View>
+              }
+              containerStyles="bg-[#FFFAFA] border-2 border-primary py-3 w-full"
+            />
+          </View>
+          <View className="flex-col items-start justify-start space-y-3 w-full">
+            <View className="w-full flex-col items-start justify-start border border-[#E4E7EC] rounded-lg">
+              <TouchableOpacity
+                onPress={() => toggleDropdown("description")}
+                className="w-full flex-row items-center justify-between p-4 rounded-lg"
+              >
+                <Text className="tex-sm font-medium text-black">
+                  Product Description
+                </Text>
+                <View className="w-8 h-8 border border-[#98A2B3] flex-row items-center justify-center rounded">
+                  <Entypo name="chevron-thin-right" size={16} color="black" />
+                </View>
+              </TouchableOpacity>
+              <View
+                ref={descriptionRef}
+                className={`w-full overflow-hidden transition-all duration-300 ${
+                  dropDown.description === true
+                    ? "max-h-[1000px] px-4 pb-4"
+                    : "max-h-0"
+                }`}
+              >
+                <Text className="text-xs font-normal text-[#98A2B3]">
+                  Checkered bag women's single shoulder indentation women's bag
+                  single room square bag. The fabric is made of PU leather,
+                  which is durableThe opening method is zipper, which is
+                  convenientBag size: length 20.5cm * height 12cm * thickness
+                  6cm, large capacityThe shoulder strap is 120cm long and can be
+                  used as a hand bag or a single shoulder bag
+                </Text>
+              </View>
+            </View>
+            <View className="w-full flex-col items-start justify-start border border-[#E4E7EC] rounded-lg">
+              <TouchableOpacity
+                onPress={() => toggleDropdown("rate")}
+                className="w-full flex-row items-center justify-between p-4 rounded-lg"
+              >
+                <Text className="tex-sm font-medium text-black">
+                  Product ratings and comments
+                </Text>
+                <View className="w-8 h-8 border border-[#98A2B3] flex-row items-center justify-center rounded">
+                  <Entypo name="chevron-thin-right" size={16} color="black" />
+                </View>
+              </TouchableOpacity>
+              <View
+                ref={descriptionRef}
+                className={`w-full overflow-hidden transition-all duration-300 ${
+                  dropDown.rate === true
+                    ? "max-h-[1000px] px-4 pb-4"
+                    : "max-h-0"
+                }`}
+              >
+                <View className="flex-row items-center justify-start space-x-3">
+                  <Text className="text-sm font-semibold text-[#98A2B3]">
+                    5.0
+                  </Text>
+                  <View>
+                    <StarRate starIndex={5} totalStar={5} />
+                  </View>
+                  <Text className="text-sm font-semibold text-[#98A2B3]">
+                    (27)
+                  </Text>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
       </ScrollView>
