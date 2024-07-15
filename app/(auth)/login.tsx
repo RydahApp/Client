@@ -25,7 +25,7 @@ const LoginScreen = () => {
       text1: "We’ve sent you 4-digit code to your Mail",
       position: "bottom",
     });
-    router.push(`/verifyemail/${payload.email}`);
+    router.replace(`/home`);
 
     action.resetForm();
   };

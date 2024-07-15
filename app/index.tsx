@@ -129,7 +129,7 @@ const OnboardingScreen = () => {
   };
 
   if (isAppFirstLaunched) {
-    return <Redirect href="/login" />;
+    return <Redirect href="/home" />;
   }
 
   return (

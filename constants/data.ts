@@ -21,3 +21,15 @@ export const onBoardingSlides = [
       "Multi-layered security: Only verified women are welcomed, creating a trusted and supportive community.",
   },
 ];
+
+export const shopCategory = [
+  "All",
+  "Jilbab",
+  "Niqab",
+  "Shoes",
+  "Bags",
+  "Nails",
+  "Hair",
+  "Clothes",
+  "utensils",
+];
