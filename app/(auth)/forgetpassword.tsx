@@ -24,7 +24,7 @@ const ForgetPasswordScreen = () => {
       text1: "We’ve sent you 4-digit code to your Mail",
       position: "bottom",
     });
-    router.push(`/resetpassword/otp/${payload.email}`);
+    router.push(`/resetpassword/otpcode/${payload.email}`);
     action.resetForm();
   };
 

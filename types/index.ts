@@ -28,3 +28,8 @@ export interface personalFormValueType {
 export interface forgetFormValueType {
   email: string;
 }
+
+export interface resetFormValueType {
+  password: string;
+  confirm_password?: string;
+}

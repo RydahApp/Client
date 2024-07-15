@@ -25,3 +25,15 @@ export const personalFormSchema = yup.object().shape({
   email: yup.string().email("Invalid email address").required("Required"),
   location: yup.string().required("Required"),
 });
+
+export const resetFormSchema = yup.object().shape({
+  password: yup
+    .string()
+    .min(6, "Password must be at least 6 characters long")
+    .matches(/\d/, "Password must contain at least one number")
+    .required("Required"),
+  confirm_password: yup
+    .string()
+    .oneOf([yup.ref("password"), undefined], "Password does not match")
+    .required("Required"),
+});
