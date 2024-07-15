@@ -3,7 +3,7 @@ import { onBoardingSlides } from "@/constants/data";
 import useFirstStore from "@/store";
 import { onBoardType } from "@/types";
 import { AntDesign } from "@expo/vector-icons";
-import { router } from "expo-router";
+import { Redirect, router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useRef, useState } from "react";
 import {
@@ -20,7 +20,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 const { width } = Dimensions.get("window");
 
 const OnboardingScreen = () => {
-  const { isAppFirstLaunched, setIsAppFirstLaunched } = useFirstStore();
+  const { isAppFirstLaunched } = useFirstStore();
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
   const ref = useRef<any>();
 
@@ -127,6 +127,10 @@ const OnboardingScreen = () => {
       </View>
     );
   };
+
+  if (isAppFirstLaunched) {
+    return <Redirect href="/login" />;
+  }
 
   return (
     <>
