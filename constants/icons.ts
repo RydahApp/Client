@@ -11,13 +11,16 @@ const homeIcon = require("@/assets/icons/homeIcon.png");
 const lockIcon = require("@/assets/icons/lockIcon.png");
 const mailIcon = require("@/assets/icons/mailIcon.png");
 const profileIcon = require("@/assets/icons/profileIcon.png");
+const editPenIcon = require("@/assets/icons/editPenIcon.png");
 const searchIcon = require("@/assets/icons/searchIcon.png");
 const whiteLoadingIcon = require("@/assets/icons/whiteLoader.gif");
+const warningIcon = require("@/assets/icons/warningIcon.png");
 
 export default {
   appleIcon,
   avatarIcon,
   buyCheckIcon,
+  editPenIcon,
   offerIcon,
   cartIcon,
   checkIcon,
@@ -29,5 +32,6 @@ export default {
   mailIcon,
   profileIcon,
   searchIcon,
+  warningIcon,
   whiteLoadingIcon,
 };

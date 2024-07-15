@@ -1,13 +1,10 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView } from "react-native";
 import { CustomButton, FormField, Topheader } from "@/components";
-import { Image } from "react-native";
-import { icons } from "@/constants";
 import { useFormik } from "formik";
 import { router } from "expo-router";
-import Toast from "react-native-toast-message";
 import { personalFormSchema } from "@/schema";
 import { personalFormValueType } from "@/types";
 import { MaterialIcons } from "@expo/vector-icons";

@@ -1,11 +1,8 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScrollView } from "react-native";
 import { CustomButton, FormField, Topheader } from "@/components";
-import { Image } from "react-native";
-import { icons } from "@/constants";
-import { forgetSchema, resetFormSchema } from "@/schema";
+import { resetFormSchema } from "@/schema";
 import { useFormik } from "formik";
 import { router } from "expo-router";
 import { resetFormValueType } from "@/types";

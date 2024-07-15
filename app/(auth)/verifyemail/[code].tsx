@@ -1,12 +1,17 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  ScrollView,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScrollView } from "react-native";
 import { CustomButton, Topheader } from "@/components";
-import {  otpVerifySchema } from "@/schema";
+import { otpVerifySchema } from "@/schema";
 import { useFormik } from "formik";
 import { router, useLocalSearchParams } from "expo-router";
-import {otpFormValueType } from "@/types";
+import { otpFormValueType } from "@/types";
 import {
   CodeField,
   Cursor,

@@ -1,11 +1,23 @@
 import React, { useRef, useState } from "react";
-import { View, Text, ScrollView, Platform, UIManager } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Platform,
+  UIManager,
+  TouchableOpacity,
+} from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image } from "react-native";
 import { shopData } from "@/constants/data";
-import { TouchableOpacity } from "react-native";
-import { AntDesign, Entypo, Feather, FontAwesome } from "@expo/vector-icons";
+import {
+  AntDesign,
+  Entypo,
+  Feather,
+  FontAwesome,
+  FontAwesome6,
+} from "@expo/vector-icons";
 import { Fee, formatNGNCurrency } from "@/helpers";
 import { CustomButton, CustomizeSwitch, StarRate } from "@/components";
 import { icons } from "@/constants";
@@ -147,7 +159,7 @@ const ProductdetailScreen = () => {
           </View>
           <View className="w-full">
             <CustomButton
-              handlePress={() => router.push(`/home`)}
+              handlePress={() => router.push(`/checkout/${data.id}`)}
               title={
                 <View className="flex-row items-center justify-center space-x-2 w-full">
                   <Image
@@ -243,6 +255,60 @@ const ProductdetailScreen = () => {
                 </View>
               </View>
             </View>
+          </View>
+          <View className="w-full flex-col items-start justify-start border border-[#E4E7EC] rounded-lg p-4">
+            <View className="w-full flex-row items-center justify-start space-x-3">
+              <Image
+                source={icons.avatarIcon}
+                alt="User avatar"
+                resizeMode="cover"
+                className="w-8 h-8"
+              />
+              <View className="flex-col items-start justify-start space-y-1">
+                <Text className="text-sm font-medium text-black">
+                  Honey feed Collections
+                </Text>
+                <View className="flex-row items-center space-x-3">
+                  <Text className="text-sm font-medium text-black">
+                    Umu Aisha
+                  </Text>
+                  <Text className="text-[#997A7A] pl-3">Ilorin Nigeria</Text>
+                </View>
+              </View>
+            </View>
+            <View className="flex-col items-start justify-start pt-3 space-y-1">
+              <Text className="text-sm font-medium text-black">
+                Sellers ratings
+              </Text>
+              <View className="flex-row items-center justify-start space-x-3">
+                <Text className="text-sm font-semibold text-[#98A2B3]">
+                  4.0
+                </Text>
+                <View>
+                  <StarRate starIndex={4} totalStar={5} />
+                </View>
+                <Text className="text-sm font-semibold text-[#98A2B3]">
+                  (27)
+                </Text>
+              </View>
+            </View>
+            <CustomButton
+              title="View Sellers profile"
+              containerStyles="bg-primary my-4 w-full py-3"
+              titleStyle="text-base font-medium text-black"
+            />
+            <CustomButton
+              handlePress={() => router.push(`/home`)}
+              title={
+                <View className="flex-row items-center justify-center space-x-2 w-full">
+                  <Text className="text-base text-black font-medium">
+                    Add seller to favourite
+                  </Text>
+                  <FontAwesome6 name="heart" size={24} color="black" />
+                </View>
+              }
+              containerStyles="bg-[#FFFAFA] border-2 border-primary py-3 w-full"
+            />
           </View>
         </View>
       </ScrollView>

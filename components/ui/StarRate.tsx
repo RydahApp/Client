@@ -15,7 +15,7 @@ const StarRate: React.FC<StarProps> = ({ starIndex, totalStar }) => {
           key={index}
           name="star"
           size={18}
-          color={starIndex >= index ? "#E6B8B8" : "#8C7070"}
+          color={starIndex >= index ? "#E6B8B8" : "#272525"}
         />
       ))}
     </View>

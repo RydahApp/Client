@@ -1,7 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScrollView } from "react-native";
 import { CustomButton, Topheader } from "@/components";
 import { otpVerifySchema } from "@/schema";
 import { useFormik } from "formik";
