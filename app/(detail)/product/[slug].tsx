@@ -159,7 +159,7 @@ const ProductdetailScreen = () => {
           </View>
           <View className="w-full">
             <CustomButton
-              handlePress={() => router.push(`/checkout/${data.id}`)}
+              handlePress={() => router.push(`/checkout/${data.id}/detail`)}
               title={
                 <View className="flex-row items-center justify-center space-x-2 w-full">
                   <Image

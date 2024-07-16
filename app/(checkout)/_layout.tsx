@@ -5,7 +5,18 @@ const CheckoutLayout = () => {
   return (
     <>
       <Stack>
-        <Stack.Screen name="checkout/[id]" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="checkout/[id]/detail"
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="checkout/[id]/payment"
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="checkout/success"
+          options={{ headerShown: false }}
+        />
       </Stack>
       <StatusBar backgroundColor="#FFFFFF" style="dark" />
     </>

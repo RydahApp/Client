@@ -37,3 +37,10 @@ export const resetFormSchema = yup.object().shape({
     .oneOf([yup.ref("password"), undefined], "Password does not match")
     .required("Required"),
 });
+
+export const creditFormSchema = yup.object().shape({
+  card_number: yup.string().required("Required"),
+  cardholder_name: yup.string().required("Required"),
+  expiry_date: yup.string().required("Required"),
+  cvv: yup.string().required("Required"),
+});

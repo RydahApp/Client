@@ -16,6 +16,7 @@ type FormType = {
   errorClass?: string;
   multiline?: boolean;
   numberOfLines?: number;
+  maxLength?: number;
 };
 
 const FormField: React.FC<FormType> = ({
@@ -32,15 +33,14 @@ const FormField: React.FC<FormType> = ({
   multiline,
   numberOfLines,
   inputStyle,
+  maxLength,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
     <View className={`space-y-2 ${otherStyles}`}>
       <View className="w-full">
-        {titleShow === true && (
-          <View className="w-full">{title}</View>
-        )}
+        {titleShow === true && <View className="w-full">{title}</View>}
       </View>
       <View
         className={`w-full h-12 px-4 bg-white rounded border border-[#D0D5DD] focus:border-primary items-center flex-row transition-all duration-300 ${errorClass}`}
@@ -56,6 +56,7 @@ const FormField: React.FC<FormType> = ({
           keyboardType={keyboardType}
           multiline={multiline}
           numberOfLines={numberOfLines}
+          maxLength={maxLength}
         />
         {type === "Password" && (
           <TouchableOpacity onPress={() => setShowPassword((prev) => !prev)}>

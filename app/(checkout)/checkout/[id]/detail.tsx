@@ -214,6 +214,7 @@ const CheckoutScreen = () => {
           title="Make payment"
           containerStyles="bg-primary my-4 w-full py-3"
           titleStyle="text-base font-medium text-black"
+          handlePress={() => router.push(`/checkout/${data.id}/payment`)}
         />
       </ScrollView>
     </SafeAreaView>

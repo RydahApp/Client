@@ -4,6 +4,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { NativeWindStyleSheet } from "nativewind";
 import { useEffect } from "react";
+import Toast from "react-native-toast-message";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -49,6 +50,7 @@ export default function RootLayout() {
         <Stack.Screen name="(checkout)" options={{ headerShown: false }} />
         <Stack.Screen name="(detail)" options={{ headerShown: false }} />
       </Stack>
+      <Toast />
       <StatusBar backgroundColor="#FFCCCC" style="dark" />
     </>
   );
