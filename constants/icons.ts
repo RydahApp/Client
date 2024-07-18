@@ -6,6 +6,9 @@ const cartIcon = require("@/assets/icons/cartIcon.png");
 const checkIcon = require("@/assets/icons/checkIcon.png");
 const eyeIcon = require("@/assets/icons/eyeIcon.png");
 const eyeSlashIcon = require("@/assets/icons/eyeSlashIcon.png");
+const focusedHomeIcon = require("@/assets/icons/focusedHomeIcon.png");
+const focusedMessageIcon = require("@/assets/icons/focusedMessageIcon.png");
+const focusedCartIcon = require("@/assets/icons/focusedCartIcon.png");
 const googleIcon = require("@/assets/icons/googleIcon.png");
 const homeIcon = require("@/assets/icons/homeIcon.png");
 const lockIcon = require("@/assets/icons/lockIcon.png");
@@ -40,4 +43,7 @@ export default {
   searchIcon,
   warningIcon,
   whiteLoadingIcon,
+  focusedHomeIcon,
+  focusedMessageIcon,
+  focusedCartIcon,
 };

@@ -1,6 +1,7 @@
 import CustomizeSwitch from "./auth/CustomizeSwitch";
 import FormField from "./auth/FormField";
 import Topheader from "./auth/Topheader";
+import NavHeader from "./ui/NavHeader";
 import ProductItem from "./shop/ProductItem";
 import CustomButton from "./ui/CustomizeButton";
 import StarRate from "./ui/StarRate";
@@ -12,4 +13,5 @@ export {
   StarRate,
   CustomizeSwitch,
   Topheader,
+  NavHeader,
 };

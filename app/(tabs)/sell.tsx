@@ -3,7 +3,7 @@ import React from "react";
 
 const SellScreen = () => {
   return (
-    <View>
+    <View className="flex-1 bg-white text-center flex-row items-center justify-center">
       <Text>SellScreen</Text>
     </View>
   );

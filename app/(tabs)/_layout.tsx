@@ -61,7 +61,7 @@ const TabLayout = () => {
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
-                icon={icons.homeIcon}
+                icon={focused ? icons.focusedHomeIcon : icons.homeIcon}
                 color={color}
                 name="Home"
                 focused={focused}
@@ -91,7 +91,7 @@ const TabLayout = () => {
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
-                icon={icons.cartIcon}
+                icon={focused ? icons.focusedCartIcon : icons.cartIcon}
                 color={color}
                 name="Sell"
                 focused={focused}
@@ -106,7 +106,7 @@ const TabLayout = () => {
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
-                icon={icons.mailIcon}
+                icon={focused ? icons.focusedMessageIcon : icons.mailIcon}
                 color={color}
                 name="Messages"
                 focused={focused}
@@ -121,7 +121,7 @@ const TabLayout = () => {
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
-                icon={icons.profileIcon}
+                icon={focused ? icons.avatarIcon : icons.profileIcon}
                 color={color}
                 name="Profile"
                 focused={focused}
