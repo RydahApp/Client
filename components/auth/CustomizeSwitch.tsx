@@ -1,5 +1,5 @@
 import { StyleSheet, TouchableOpacity } from "react-native";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 interface CustomSwitchProps {
   isOn: boolean;
   onToggle: () => void;
@@ -11,6 +11,7 @@ const CustomizeSwitch: React.FC<CustomSwitchProps> = ({ isOn, onToggle }) => {
       onPress={onToggle}
       style={[isOn ? styles.switchOn : styles.switchOff]}
       className="w-[45px] h-[28px] rounded-[15px] p-[3px] justify-center"
+      testID="custom-switch"
     >
       <View
         style={[styles.switchThumb, isOn ? styles.thumbOn : styles.thumbOff]}
