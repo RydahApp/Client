@@ -16,6 +16,7 @@ const StarRate: React.FC<StarProps> = ({ starIndex, totalStar }) => {
           name="star"
           size={18}
           color={starIndex >= index ? "#E6B8B8" : "#272525"}
+          testID={`star-icon-${index}`}
         />
       ))}
     </View>

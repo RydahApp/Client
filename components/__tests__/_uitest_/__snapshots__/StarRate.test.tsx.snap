@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StarRate Component renders stars with the correct color based on starIndex 1`] = `
+<View
+  style={
+    [
+      {
+        "flexDirection": "row",
+      },
+      {
+        "justifyContent": "center",
+      },
+      {
+        "alignItems": "center",
+      },
+    ]
+  }
+>
+  <Text
+    allowFontScaling={false}
+    selectable={false}
+    style={
+      [
+        {
+          "color": "#E6B8B8",
+          "fontSize": 18,
+        },
+        undefined,
+        {
+          "fontFamily": "anticon",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        {},
+      ]
+    }
+    testID="star-icon-0"
+  >
+    
+  </Text>
+  <Text
+    allowFontScaling={false}
+    selectable={false}
+    style={
+      [
+        {
+          "color": "#E6B8B8",
+          "fontSize": 18,
+        },
+        [
+          {
+            "marginLeft": 4,
+          },
+        ],
+        {
+          "fontFamily": "anticon",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        {},
+      ]
+    }
+    testID="star-icon-1"
+  >
+    
+  </Text>
+  <Text
+    allowFontScaling={false}
+    selectable={false}
+    style={
+      [
+        {
+          "color": "#E6B8B8",
+          "fontSize": 18,
+        },
+        [
+          {
+            "marginLeft": 4,
+          },
+        ],
+        {
+          "fontFamily": "anticon",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        {},
+      ]
+    }
+    testID="star-icon-2"
+  >
+    
+  </Text>
+  <Text
+    allowFontScaling={false}
+    selectable={false}
+    style={
+      [
+        {
+          "color": "#E6B8B8",
+          "fontSize": 18,
+        },
+        [
+          {
+            "marginLeft": 4,
+          },
+        ],
+        {
+          "fontFamily": "anticon",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        {},
+      ]
+    }
+    testID="star-icon-3"
+  >
+    
+  </Text>
+  <Text
+    allowFontScaling={false}
+    selectable={false}
+    style={
+      [
+        {
+          "color": "#272525",
+          "fontSize": 18,
+        },
+        [
+          {
+            "marginLeft": 4,
+          },
+        ],
+        {
+          "fontFamily": "anticon",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        {},
+      ]
+    }
+    testID="star-icon-4"
+  >
+    
+  </Text>
+</View>
+`;
+
+exports[`StarRate Component renders the correct number of stars based on totalStar 1`] = `
+<View
+  style={
+    [
+      {
+        "flexDirection": "row",
+      },
+      {
+        "justifyContent": "center",
+      },
+      {
+        "alignItems": "center",
+      },
+    ]
+  }
+>
+  <Text />
+  <Text />
+  <Text />
+  <Text />
+  <Text />
+</View>
+`;
