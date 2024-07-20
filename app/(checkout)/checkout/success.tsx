@@ -19,7 +19,9 @@ const CheckoutSuccessScreen = () => {
             Toast.show({
               type: "success",
               text1: "Your placed order has been confirmed by the seller",
+              text2: "Learn more",
               position: "top",
+              onPress: () => router.replace(`/notification/notify`),
             });
           }}
           title={

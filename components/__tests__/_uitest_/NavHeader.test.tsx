@@ -1,5 +1,5 @@
 import NavHeader from "@/components/ui/NavHeader";
-import renderer from "react-test-renderer";
+import { render, fireEvent } from "@testing-library/react-native";
 import { router } from "expo-router";
 
 jest.mock("expo-router", () => ({
@@ -14,21 +14,28 @@ jest.mock("@/constants", () => ({
   },
 }));
 
-describe("<NavHeader />", () => {
+describe("NavHeader Component", () => {
   it("renders correctly", () => {
-    const tree = renderer.create(<NavHeader />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { getByText, getByTestId } = render(<NavHeader />);
+
+    expect(getByText("Aisha Uthman")).toBeTruthy();
+    expect(getByText("Aisha Ventures")).toBeTruthy();
+    expect(getByTestId("profile-avatar")).toBeTruthy();
   });
 
-  it("has the correct number of children", () => {
-    const tree = renderer.create(<NavHeader />).toJSON();
+  it("navigates to notification screen on bell icon press", () => {
+    const { getByTestId } = render(<NavHeader />);
 
-    // Ensure tree is not null and is a single object (not an array)
-    if (tree && !Array.isArray(tree) && "children" in tree) {
-      expect(tree.children?.length).toBe(2); // Adjust the expected number based on your component's structure
-    } else {
-      // Fail the test if the structure is unexpected
-      throw new Error("Tree structure is not as expected");
-    }
+    const bellButton = getByTestId("bell-button");
+    fireEvent.press(bellButton);
+
+    expect(router.push).toHaveBeenCalledWith("/notification/notify");
+  });
+
+  it("renders the heart icon", () => {
+    const { getByTestId } = render(<NavHeader />);
+
+    const heartButton = getByTestId("heart-button");
+    expect(heartButton).toBeTruthy();
   });
 });

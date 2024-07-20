@@ -31,7 +31,7 @@ const Notify = () => {
         className="w-full flex-col space-y-6"
       >
         <View className="w-full flex-row items-center justify-between space-x-10">
-          <TouchableOpacity onPress={() => router.back()}>
+          <TouchableOpacity onPress={() => router.replace("/home")}>
             <Entypo name="chevron-thin-left" size={24} color="black" />
           </TouchableOpacity>
           <Text className="text-base font-medium text-black w-[60%]">

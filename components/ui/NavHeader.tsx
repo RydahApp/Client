@@ -9,7 +9,11 @@ const NavHeader = () => {
     <View className="w-full px-5 flex-row items-center justify-between">
       <View className="relative flex-row space-x-3 items-center justify-start">
         <View className="relative w-14 h-14 flex-row items-center justify-center bg-primary rounded-full">
-          <Image source={icons.avatarIcon} alt="profile avatar" />
+          <Image
+            source={icons.avatarIcon}
+            alt="profile avatar"
+            testID="profile-avatar"
+          />
           <View className="w-4 h-4 bg-[#04802E] rounded-full border border-white absolute right-1 bottom-[1px]" />
         </View>
         <View className="flex-col items-start justify-start">
@@ -18,10 +22,10 @@ const NavHeader = () => {
         </View>
       </View>
       <View className="flex-row items-center justify-end space-x-6">
-        <TouchableOpacity>
+        <TouchableOpacity testID="heart-button">
           <FontAwesome5 name="heart" size={24} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push("/notification/notify")}>
+        <TouchableOpacity testID="bell-button" onPress={() => router.push("/notification/notify")}>
           <Fontisto name="bell" size={24} color="black" />
         </TouchableOpacity>
       </View>
