@@ -24,6 +24,7 @@ const CustomButton: React.FC<CustomizeBtn> = ({
       onPress={handlePress}
       activeOpacity={0.7}
       accessibilityRole="button"
+      testID="custom-button"
       className={`rounded-lg min-h-[36px] flex-row space-x-2 justify-center items-center ${containerStyles} ${
         isLoading || disabled ? "opacity-50 cursor-not-allowed" : ""
       }`}
@@ -35,6 +36,7 @@ const CustomButton: React.FC<CustomizeBtn> = ({
           resizeMode="cover"
           className="w-6 h-6"
           accessibilityRole="image"
+          testID="loading-image"
         />
       )}
       <View className="w-fit">
