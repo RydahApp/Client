@@ -45,6 +45,6 @@ export interface Product {
   id: string;
   product_image: ImageSourcePropType | undefined;
   title: string;
-  category: string;
+  category?: string;
   price: number;
 }
