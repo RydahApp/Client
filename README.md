@@ -26,7 +26,7 @@ Find your perfect fit: Explore a diverse range of modest clothing, accessories, 
 - **React Native**: This project utilizes React Native for building mobile applications.
 - **Expo**: Expo is used as a development environment and toolchain for React Native applications.
 - **TypeScript**: TypeScript is used for type-checking and providing enhanced development experience.
-- **Navigation**: Navigation between screens is managed using React Navigation.
+- **Navigation**: Navigation between screens is managed using Expo App Router.
 - **Fonts**: Custom fonts are integrated using Expo Fonts.
 
 ## Getting Started
@@ -61,7 +61,7 @@ Follow these instructions to get the project up and running on your local machin
    ```
    or
    ```bash
-   npx expo start
+   npx expo start -c
    ```
 2. Use an emulator/simulator or scan the QR code using the Expo Go app to run the app on your device.
 
@@ -69,16 +69,17 @@ Follow these instructions to get the project up and running on your local machin
 
 Rydah/
 │
-├── assets/ # Images, fonts, and other static assets
+├── assets/ # Images, Icons, fonts, and other static assets
 │
-├── src/ # Source files
+├── ./ # Source files
 │ ├── components/ # Reusable components
-│ ├── navigation/ # Navigation setup
-│ ├── screens/ # Individual screens or views
-│ ├── App.tsx # Main application component
+│ ├── components/_tests_ # Holding all test files and grouped in folder
+│ ├── app/ # Navigation setup
+│ ├── constants/ # Holding files that is Reusable within the entire application
+│ ├── types/ # Main global types folder
 │ └── ...
 │
-├── App.tsx # Root component of the app
+├── app/index.tsx # Root component of the app
 ├── app.json # Expo configuration file
 ├── package.json # NPM package configuration
 └── ...
