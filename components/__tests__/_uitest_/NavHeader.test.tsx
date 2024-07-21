@@ -36,6 +36,7 @@ describe("NavHeader Component", () => {
     const { getByTestId } = render(<NavHeader />);
 
     const heartButton = getByTestId("heart-button");
-    expect(heartButton).toBeTruthy();
+    fireEvent.press(heartButton);
+    expect(router.push).toHaveBeenCalledWith("/myfavourites");
   });
 });

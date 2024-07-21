@@ -41,6 +41,7 @@ export const shopData = [
     title: "Classic Brown Bag",
     category: "Bags",
     price: 7000,
+    quantity: 1,
   },
   {
     id: "classic_slippers0192393291203",
@@ -48,6 +49,7 @@ export const shopData = [
     title: "Classic Slippers",
     category: "Shoes",
     price: 4600,
+    quantity: 1,
   },
   {
     id: "classic_bag01932122393291203",
@@ -55,6 +57,7 @@ export const shopData = [
     title: "Classic Bag",
     category: "Shoes",
     price: 4600,
+    quantity: 1,
   },
   {
     id: "classic_shoes0192393291203",
@@ -62,6 +65,7 @@ export const shopData = [
     title: "Classic Shoes",
     category: "Shoes",
     price: 7600,
+    quantity: 1,
   },
   {
     id: "classic__bag01122393291203",
@@ -69,6 +73,7 @@ export const shopData = [
     title: "Classic Bag",
     category: "Bags",
     price: 7000,
+    quantity: 1,
   },
   {
     id: "classic__bag019442393291203",
@@ -76,5 +81,6 @@ export const shopData = [
     title: "Classic Bag",
     category: "Bags",
     price: 8000,
+    quantity: 1,
   },
 ];
