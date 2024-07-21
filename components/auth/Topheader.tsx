@@ -13,6 +13,7 @@ const Topheader: React.FC<TopHeaderProp> = ({ subtitle, title }) => {
       <Image
         source={images.rydahLogo}
         alt="Rydah app logo"
+        testID="rydah-logo"
         resizeMode="contain"
       />
       <View className="flex-col items-start justify-start space-y-2">

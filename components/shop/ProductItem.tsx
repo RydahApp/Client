@@ -19,6 +19,7 @@ const ProductItem: React.FC<ProductType> = ({ data }) => {
         <TouchableOpacity
           onPress={() => navigateToDetailPage(data.id)}
           className="w-[124px] aspect-square rounded-lg"
+          testID="product-image"
         >
           <Image
             source={data.product_image}
@@ -27,14 +28,20 @@ const ProductItem: React.FC<ProductType> = ({ data }) => {
           />
         </TouchableOpacity>
         <View className="w-full space-y-2">
-          <Text className="text-sm font-medium text-[#212121]">
+          <Text
+            className="text-sm font-medium text-[#212121]"
+            testID="product-title"
+          >
             {data.title.substring(0, 18)}
           </Text>
           <View className="flex-row items-center justify-between">
-            <Text className="text-xs font-medium text-[#212121]">
+            <Text
+              className="text-xs font-medium text-[#212121]"
+              testID="product-price"
+            >
               {formatNGNCurrency(data.price)}
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity testID="heart-icon">
               <FontAwesome5 name="heart" size={14} color="#FFCCCC" />
             </TouchableOpacity>
           </View>
