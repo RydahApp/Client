@@ -23,6 +23,7 @@ const cvvIcon = require("@/assets/icons/cvvIcon.png");
 const holderIcon = require("@/assets/icons/holderIcon.png");
 const filterIcon = require("@/assets/icons/filterIcon.png");
 const memberIcon = require("@/assets/icons/memberIcon.png");
+const messageIcon = require("@/assets/icons/messageIcon.png");
 
 export default {
   appleIcon,
@@ -43,6 +44,7 @@ export default {
   homeIcon,
   lockIcon,
   mailIcon,
+  messageIcon,
   profileIcon,
   searchIcon,
   warningIcon,

@@ -48,6 +48,7 @@ export interface Product {
   category?: string;
   price: number;
   quantity: number;
+  brand?: string;
 }
 
 export interface categoryItemType {
@@ -55,4 +56,5 @@ export interface categoryItemType {
   icon: ImageSourcePropType | undefined;
   title: string;
   category: string;
+  price: number;
 }

@@ -68,12 +68,8 @@ const LoginScreen = () => {
                   touched.email && errors.email ? "!border-red-500" : ""
                 } pl-[45px]`}
               />
-              <View className="flex-row items-center justify-start space-x-2 absolute top-[66%] left-[6%]">
-                <Image
-                  source={icons.mailIcon}
-                  resizeMode="contain"
-                  className="w-4 h-4"
-                />
+              <View className="flex-row items-center justify-start space-x-2 absolute top-[68%] left-[6%]">
+                <Image source={icons.mailIcon} resizeMode="contain" />
               </View>
             </View>
             {touched.email && errors.email ? (
@@ -100,12 +96,8 @@ const LoginScreen = () => {
                   touched.password && errors.password ? "!border-red-500" : ""
                 } pl-[45px]`}
               />
-              <View className="flex-row items-center justify-start space-x-2 absolute top-[66%] left-[6%]">
-                <Image
-                  source={icons.lockIcon}
-                  resizeMode="contain"
-                  className="w-4 h-4"
-                />
+              <View className="flex-row items-center justify-start space-x-2 absolute top-[68%] left-[6%]">
+                <Image source={icons.lockIcon} resizeMode="contain" />
               </View>
             </View>
             {touched.password && errors.password ? (

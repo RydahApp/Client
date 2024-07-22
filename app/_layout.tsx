@@ -5,6 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import { NativeWindStyleSheet } from "nativewind";
 import { useEffect } from "react";
 import Toast from "react-native-toast-message";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -42,7 +43,7 @@ export default function RootLayout() {
   });
 
   return (
-    <>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
@@ -53,6 +54,6 @@ export default function RootLayout() {
       </Stack>
       <Toast />
       <StatusBar backgroundColor="#FFCCCC" style="dark" />
-    </>
+    </GestureHandlerRootView>
   );
 }

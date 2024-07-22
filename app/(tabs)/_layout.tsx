@@ -16,15 +16,10 @@ const TabIcon = ({ icon, color, name, focused }: tabIconType) => (
       focused ? "bg-primary w-14 h-14 rounded-full mb-6" : ""
     } transition-all duration-300`}
   >
-    <Image
-      source={icon}
-      resizeMode="contain"
-      tintColor={color}
-      className="w-6 h-6"
-    />
+    <Image source={icon} resizeMode="contain" tintColor={color} />
     <Text
       className={`${
-        focused ? "hidden" : "block text-[#787070]"
+        focused ? "hidden" : "block"
       } text-sm font-normal`}
       style={{ color: color }}
     >
@@ -40,7 +35,7 @@ const TabLayout = () => {
         screenOptions={{
           tabBarShowLabel: false,
           tabBarActiveTintColor: "#000000",
-          tabBarInactiveTintColor: "#787070",
+          tabBarInactiveTintColor: "#000000",
           tabBarStyle: {
             backgroundColor: "#FFFFFF",
             borderTopLeftRadius: 24,
@@ -106,7 +101,7 @@ const TabLayout = () => {
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
-                icon={focused ? icons.focusedMessageIcon : icons.mailIcon}
+                icon={focused ? icons.focusedMessageIcon : icons.messageIcon}
                 color={color}
                 name="Messages"
                 focused={focused}
