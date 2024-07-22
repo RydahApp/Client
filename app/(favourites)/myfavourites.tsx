@@ -33,7 +33,7 @@ const MyFavouritesScreen = () => {
           ListEmptyComponent={() => (
             <View className="w-full flex-col items-center justify-center h-[80vh]">
               <Image source={images.notFoundImage} alt="" />
-              <Text className="text-xl text-center font-normal text-gray-700 my-6">
+              <Text className="text-base text-center font-normal text-black my-6">
                 No favourites added yet
               </Text>
               <View>
@@ -76,10 +76,11 @@ const FavouriteProductItem: React.FC<{
   const navigateToDetailPage = (slug: string) => {
     router.push(`/productfavourite/${slug}`);
   };
+
   const { deleteFavouriteItem } = useFavouriteStore();
 
   return (
-    <View className="mx-auto pb-3">
+    <View className="mr-auto pb-3">
       <View className="space-y-3 flex-col">
         <TouchableOpacity
           onPress={() => navigateToDetailPage(data.id)}

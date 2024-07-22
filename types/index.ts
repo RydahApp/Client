@@ -49,3 +49,10 @@ export interface Product {
   price: number;
   quantity: number;
 }
+
+export interface categoryItemType {
+  id: string;
+  icon: ImageSourcePropType | undefined;
+  title: string;
+  category: string;
+}
