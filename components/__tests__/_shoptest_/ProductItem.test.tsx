@@ -17,6 +17,7 @@ const sampleProduct: Product = {
   title: "Test Product Title That Is Long",
   price: 1234.56,
   product_image: require("@/assets/images/productImage1.png"),
+  quantity: 1,
 };
 
 describe("ProductItem Component", () => {
@@ -24,10 +25,14 @@ describe("ProductItem Component", () => {
     const { getByTestId } = render(<ProductItem data={sampleProduct} />);
 
     // Check if the title is rendered correctly
-    expect(getByTestId("product-title").props.children).toBe(sampleProduct.title.substring(0, 18));
+    expect(getByTestId("product-title").props.children).toBe(
+      sampleProduct.title.substring(0, 18)
+    );
 
     // Check if the price is formatted correctly
-    expect(getByTestId("product-price").props.children).toBe(formatNGNCurrency(sampleProduct.price));
+    expect(getByTestId("product-price").props.children).toBe(
+      formatNGNCurrency(sampleProduct.price)
+    );
 
     // Check if the image is rendered
     expect(getByTestId("product-image")).toBeTruthy();

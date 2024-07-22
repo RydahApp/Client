@@ -22,7 +22,7 @@ const NavHeader = () => {
         </View>
       </View>
       <View className="flex-row items-center justify-end space-x-6">
-        <TouchableOpacity testID="heart-button">
+        <TouchableOpacity testID="heart-button" onPress={() => router.push("/myfavourites")}>
           <FontAwesome5 name="heart" size={24} color="black" />
         </TouchableOpacity>
         <TouchableOpacity testID="bell-button" onPress={() => router.push("/notification/notify")}>

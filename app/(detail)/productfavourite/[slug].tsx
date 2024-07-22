@@ -10,7 +10,6 @@ import {
 import { router, useLocalSearchParams } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image } from "react-native";
-import { shopData } from "@/constants/data";
 import {
   AntDesign,
   Entypo,
@@ -33,32 +32,22 @@ if (
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-const ProductdetailScreen = () => {
+const FavouriteDetailScreen = () => {
   const { slug } = useLocalSearchParams<{ slug?: string }>();
-  const [count, setCount] = useState(1);
   const [showFee, setShowFee] = useState(true);
   const [dropDown, setDropDown] = useState({
     description: true,
     rate: false,
   });
   const [addingToFavourite, setAddingToFavourite] = useState(false);
-  const { addToFavourite } = useFavouriteStore();
+  const { addToFavourite, handleDecrement, handleIncrement, favouriteItems } =
+    useFavouriteStore();
   const descriptionRef = useRef<View>(null);
   const scrollViewRef = useRef<ScrollView>(null);
 
-  const data = shopData.find((item) => item.id === slug);
+  const data = favouriteItems.find((item) => item.id === slug);
 
   if (!data) return;
-
-  const decrementCount = () => {
-    if (count > 0) {
-      setCount(count - 1);
-    }
-  };
-
-  const incrementCount = () => {
-    setCount(count + 1);
-  };
 
   const toggleDropdown = (key: keyof typeof dropDown) => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
@@ -81,12 +70,12 @@ const ProductdetailScreen = () => {
   const totalPrice = data.price + Fee;
 
   const handleAddToFavourite = (product: Product) => {
-    const productWithQuantity = { ...product, quantity: count };
+    const productWithQuantity = { ...product, quantity: data.quantity };
     setAddingToFavourite(true);
     addToFavourite(productWithQuantity);
     Toast.show({
       type: "success",
-      text1: "Added to Favourite",
+      text1: "Updated Favourite",
       visibilityTime: 1000,
     });
     setTimeout(() => {
@@ -128,7 +117,7 @@ const ProductdetailScreen = () => {
             <View className="flex-row items-center justify-end space-x-5">
               <TouchableOpacity onPress={() => handleAddToFavourite(data)}>
                 {addingToFavourite ? (
-                  <AntDesign name="heart" size={20} color="#FFCCCC" />
+                  <AntDesign name="heart" size={24} color="#FFCCCC" />
                 ) : (
                   <FontAwesome name="heart" size={24} color="black" />
                 )}
@@ -149,11 +138,17 @@ const ProductdetailScreen = () => {
               </Text>
             </View>
             <View className="bg-primary border border-primary flex-row justify-between py-2 px-3 w-[102px] rounded-full">
-              <TouchableOpacity onPress={decrementCount}>
+              <TouchableOpacity
+                onPress={() => handleDecrement(data.id.toString())}
+              >
                 <AntDesign name="minus" size={16} color="#121212" />
               </TouchableOpacity>
-              <Text className="text-sm font-semibold text-black">{count}</Text>
-              <TouchableOpacity onPress={incrementCount}>
+              <Text className="text-sm font-semibold text-black">
+                {data.quantity}
+              </Text>
+              <TouchableOpacity
+                onPress={() => handleIncrement(data.id.toString())}
+              >
                 <AntDesign name="plus" size={16} color="#121212" />
               </TouchableOpacity>
             </View>
@@ -343,4 +338,4 @@ const ProductdetailScreen = () => {
   );
 };
 
-export default ProductdetailScreen;
+export default FavouriteDetailScreen;
