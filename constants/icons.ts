@@ -21,12 +21,16 @@ const warningIcon = require("@/assets/icons/warningIcon.png");
 const cardIcon = require("@/assets/icons/cardIcon.png");
 const cvvIcon = require("@/assets/icons/cvvIcon.png");
 const holderIcon = require("@/assets/icons/holderIcon.png");
+const filterIcon = require("@/assets/icons/filterIcon.png");
+const memberIcon = require("@/assets/icons/memberIcon.png");
 
 export default {
   appleIcon,
   avatarIcon,
   buyCheckIcon,
   editPenIcon,
+  filterIcon,
+  memberIcon,
   cardIcon,
   cvvIcon,
   holderIcon,

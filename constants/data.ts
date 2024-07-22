@@ -84,3 +84,94 @@ export const shopData = [
     quantity: 1,
   },
 ];
+
+export const categoryItem = [
+  {
+    id: "#01128u1289y9eh12bdkigascdvsjhv",
+    icon: require("@/assets/icons/itemIcon1.png"),
+    title: "Jilbab",
+    category: "Jilbab",
+  },
+  {
+    id: "#0228u1289y9eh12bdkigascdvsjhv",
+    icon: require("@/assets/icons/itemIcon2.png"),
+    title: "Niqab",
+    category: "Niqab",
+  },
+  {
+    id: "#0328u1289y9eh12bdkigascdvsjhv",
+    icon: require("@/assets/icons/itemIcon3.png"),
+    title: "Hijab",
+    category: "Hijab",
+  },
+  {
+    id: "#0428u1289y9eh12bdkigascdvsjhv",
+    icon: require("@/assets/icons/itemIcon4.png"),
+    title: "Abaya",
+    category: "Abaya",
+  },
+  {
+    id: "#0528u1289y9eh12bdkigascdvsjhv",
+    icon: require("@/assets/icons/itemIcon5.png"),
+    title: "Gloves",
+    category: "Gloves",
+  },
+  {
+    id: "#0628u1289y9eh12bdkigascdvsjhv",
+    icon: require("@/assets/icons/itemIcon6.png"),
+    title: "Dress",
+    category: "Dress",
+  },
+];
+
+export const memberItem = [
+  {
+    id: "#0128u1289y9eh12bdkigascdvsjhv",
+    icon: require("@/assets/icons/memberIcon1.png"),
+    title: "Bags",
+    category: "Bags",
+  },
+  {
+    id: "#0228u2289y9eh22bdkigascdvsjhv",
+    icon: require("@/assets/icons/memberIcon2.png"),
+    title: "Jewelries",
+    category: "Jewelries",
+  },
+  {
+    id: "#0328u3289y9eh32bdkigascdvsjhv",
+    icon: require("@/assets/icons/memberIcon3.png"),
+    title: "Kids",
+    category: "Kids",
+  },
+  {
+    id: "#0428u4289y9eh42bdkigascdvsjhv",
+    icon: require("@/assets/icons/memberIcon4.png"),
+    title: "Clothings",
+    category: "Clothings",
+  },
+  {
+    id: "#0528u5289y9eh52bdkigascdvsjhv",
+    icon: require("@/assets/icons/memberIcon5.png"),
+    title: "Hair accessories",
+    category: "Hair accessories",
+  },
+  {
+    id: "#0628u6289y9eh62bdkigascdvsjhv",
+    icon: require("@/assets/icons/memberIcon6.png"),
+    title: "Kitchen utensils",
+    category: "Kitchen utensils",
+  },
+  {
+    id: "#0728u7289y9eh72bdkigascdvsjhv",
+    icon: require("@/assets/icons/memberIcon7.png"),
+    title: "Frangrances",
+    category: "Frangrances",
+  },
+  {
+    id: "#0828u1289y9eh12bdkigascdvsjhv",
+    icon: require("@/assets/icons/memberIcon8.png"),
+    title: "Skincare",
+    category: "Skincare",
+  },
+  
+];
