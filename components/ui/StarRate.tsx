@@ -4,9 +4,10 @@ import { View } from "react-native";
 interface StarProps {
   starIndex: number;
   totalStar: number;
+  color?: string;
 }
 
-const StarRate: React.FC<StarProps> = ({ starIndex, totalStar }) => {
+const StarRate: React.FC<StarProps> = ({ starIndex, totalStar, color }) => {
   return (
     <View className="flex-row justify-center items-center space-x-1">
       {/* Render indicator */}
@@ -14,8 +15,10 @@ const StarRate: React.FC<StarProps> = ({ starIndex, totalStar }) => {
         <AntDesign
           key={index}
           name="star"
-          size={18}
-          color={starIndex >= index ? "#E6B8B8" : "#272525"}
+          size={15}
+          color={
+            starIndex >= index ? `${color ? color : "#E6B8B8"}` : "#272525"
+          }
           testID={`star-icon-${index}`}
         />
       ))}
