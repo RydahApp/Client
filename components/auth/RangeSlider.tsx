@@ -7,7 +7,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 
-export interface RangeSliderProps {
+interface RangeSliderProps {
   sliderWidth: number;
   min: number;
   max: number;

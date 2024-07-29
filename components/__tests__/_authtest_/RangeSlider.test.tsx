@@ -1,76 +1,71 @@
-// import React from "react";
-// import { render, fireEvent } from "@testing-library/react-native";
-// import { GestureHandlerRootView } from "react-native-gesture-handler";
-// import RangeSlider, { RangeSliderProps } from "@/components/auth/RangeSlider";
+// RangeSlider.test.tsx
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react-native';
+import RangeSlider from '@/components/auth/RangeSlider';
 
-// describe("RangeSlider", () => {
-//   const defaultProps: RangeSliderProps = {
-//     sliderWidth: 300,
-//     min: 0,
-//     max: 100,
-//     step: 1,
-//     onValueChange: jest.fn(),
-//   };
+describe('RangeSlider', () => {
+  const sliderWidth = 300;
+  const min = 0;
+  const max = 100;
+  const step = 1;
+  const onValueChange = jest.fn();
 
-//   it("renders correctly", () => {
-//     const { getByTestId } = render(<RangeSlider {...defaultProps} />);
+  it('renders correctly', () => {
+    const { getByTestId } = render(
+      <RangeSlider
+        sliderWidth={sliderWidth}
+        min={min}
+        max={max}
+        step={step}
+        onValueChange={onValueChange}
+      />
+    );
+    expect(getByTestId('sliderContainer')).toBeTruthy();
+    expect(getByTestId('thumb1')).toBeTruthy();
+    expect(getByTestId('thumb2')).toBeTruthy();
+  });
 
-//     expect(getByTestId("sliderContainer")).toBeTruthy();
-//     expect(getByTestId("thumb1")).toBeTruthy();
-//     expect(getByTestId("thumb2")).toBeTruthy();
-//   });
+  // it('calls onValueChange when thumbs are moved', () => {
+  //   const { getByTestId } = render(
+  //     <RangeSlider
+  //       sliderWidth={sliderWidth}
+  //       min={min}
+  //       max={max}
+  //       step={step}
+  //       onValueChange={onValueChange}
+  //     />
+  //   );
 
-//   it("handles pan gesture correctly", () => {
-//     const { getByTestId } = render(<RangeSlider {...defaultProps} />);
+  //   const thumb1 = getByTestId('thumb1');
+  //   const thumb2 = getByTestId('thumb2');
 
-//     const thumb1 = getByTestId("thumb1");
-//     const thumb2 = getByTestId("thumb2");
+  //   // Simulate thumb movements
+  //   fireEvent(thumb1, 'onGestureEvent', {
+  //     nativeEvent: {
+  //       translationX: 50,
+  //     },
+  //   });
+  //   fireEvent(thumb1, 'onHandlerStateChange', {
+  //     nativeEvent: {
+  //       state: 5, // End state
+  //     },
+  //   });
 
-//     // Simulate pan gesture for thumb1
-//     fireEvent(thumb1, "gestureHandlerStateChange", {
-//       nativeEvent: { state: "began" },
-//     });
-//     fireEvent(thumb1, "gestureHandlerStateChange", {
-//       nativeEvent: { state: "active", translationX: 50 },
-//     });
-//     fireEvent(thumb1, "gestureHandlerStateChange", {
-//       nativeEvent: { state: "end" },
-//     });
+  //   fireEvent(thumb2, 'onGestureEvent', {
+  //     nativeEvent: {
+  //       translationX: -50,
+  //     },
+  //   });
+  //   fireEvent(thumb2, 'onHandlerStateChange', {
+  //     nativeEvent: {
+  //       state: 5, // End state
+  //     },
+  //   });
 
-//     // Simulate pan gesture for thumb2
-//     fireEvent(thumb2, "gestureHandlerStateChange", {
-//       nativeEvent: { state: "began" },
-//     });
-//     fireEvent(thumb2, "gestureHandlerStateChange", {
-//       nativeEvent: { state: "active", translationX: -50 },
-//     });
-//     fireEvent(thumb2, "gestureHandlerStateChange", {
-//       nativeEvent: { state: "end" },
-//     });
-
-//     expect(defaultProps.onValueChange).toHaveBeenCalled();
-//   });
-
-//   it("updates thumb positions correctly", () => {
-//     const { getByTestId } = render(<RangeSlider {...defaultProps} />);
-
-//     const thumb1 = getByTestId("thumb1");
-//     const thumb2 = getByTestId("thumb2");
-
-//     // Simulate pan gesture for thumb1
-//     fireEvent(thumb1, "gestureHandlerStateChange", {
-//       nativeEvent: { state: "active", translationX: 100 },
-//     });
-
-//     // Simulate pan gesture for thumb2
-//     fireEvent(thumb2, "gestureHandlerStateChange", {
-//       nativeEvent: { state: "active", translationX: -100 },
-//     });
-
-//     // Check the new values
-//     expect(thumb1.props.style.transform[0].translateX).toBeGreaterThan(0);
-//     expect(thumb2.props.style.transform[0].translateX).toBeLessThan(
-//       defaultProps.sliderWidth
-//     );
-//   });
-// });
+  //   expect(onValueChange).toHaveBeenCalledTimes(2);
+  //   expect(onValueChange).toHaveBeenCalledWith({
+  //     min: expect.any(Number),
+  //     max: expect.any(Number),
+  //   });
+  // });
+});
