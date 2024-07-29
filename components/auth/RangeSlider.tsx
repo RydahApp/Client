@@ -7,7 +7,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 
-interface RangeSliderProps {
+export interface RangeSliderProps {
   sliderWidth: number;
   min: number;
   max: number;
@@ -119,11 +119,14 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
   const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 
   return (
-    <View style={[styles.sliderContainer, { width: sliderWidth }]}>
+    <View
+      style={[styles.sliderContainer, { width: sliderWidth }]}
+      testID="sliderContainer"
+    >
       <View style={[styles.sliderBack, { width: sliderWidth }]} />
       <Animated.View style={[sliderStyle, styles.sliderFront]} />
       <GestureDetector gesture={pan}>
-        <Animated.View style={[animatedStyle, styles.thumb]}>
+        <Animated.View style={[animatedStyle, styles.thumb]} testID="thumb1">
           <Animated.View style={[opacityStyle, styles.label]}>
             <AnimatedTextInput
               style={styles.labelText}
@@ -140,7 +143,7 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
         </Animated.View>
       </GestureDetector>
       <GestureDetector gesture={pan2}>
-        <Animated.View style={[animatedStyle2, styles.thumb]}>
+        <Animated.View style={[animatedStyle2, styles.thumb]} testID="thumb2">
           <Animated.View style={[opacityStyle2, styles.label]}>
             <AnimatedTextInput
               style={styles.labelText}
