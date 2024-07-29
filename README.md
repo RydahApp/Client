@@ -8,6 +8,7 @@ This project is a simple ecommerce applications for muslims, with user security 
   - [Table of Contents](#table-of-contents)
   - [About](#about)
   - [Dependencies](#dependencies)
+      - [DevDependencies](#devdependencies)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
@@ -23,11 +24,47 @@ Find your perfect fit: Explore a diverse range of modest clothing, accessories, 
 
 ## Dependencies
 
-- **React Native**: This project utilizes React Native for building mobile applications.
-- **Expo**: Expo is used as a development environment and toolchain for React Native applications.
-- **TypeScript**: TypeScript is used for type-checking and providing enhanced development experience.
-- **Navigation**: Navigation between screens is managed using Expo App Router.
-- **Fonts**: Custom fonts are integrated using Expo Fonts.
+- **@expo/vector-icons**: Provides customizable icons for React Native.
+- **@react-native-async-storage/async-storage**: Async storage solution for persistent data storage.
+- **@react-navigation/native**: Handles navigation between screens in the app.
+- **expo**: Development framework for React Native apps.
+- **expo-constants**: Accesses system constants like device info and app configuration.
+- **expo-font**: Loads and manages custom fonts.
+- **expo-linking**: Manages deep linking and URL schemes.
+- **expo-router**: Provides routing and navigation capabilities.
+- **expo-splash-screen**: Manages app splash screens during loading.
+- **expo-status-bar**: Configures the status bar appearance.
+- **expo-system-ui**: Controls system UI settings.
+- **expo-web-browser**: Opens external links in a web browser.
+- **formik**: Manages form state and validation.
+- **nativewind**: Styles components using Tailwind CSS classes.
+- **react**: Core library for building user interfaces.
+- **react-dom**: DOM bindings for React.
+- **react-native**: Framework for building native mobile applications.
+- **react-native-confirmation-code-field**: Input field for confirmation codes.
+- **react-native-gesture-handler**: Handles gestures in React Native.
+- **react-native-reanimated**: Animations library for React Native.
+- **react-native-safe-area-context**: Manages safe area insets for React Native.
+- **react-native-screens**: Optimizes screen transitions and memory usage.
+- **react-native-toast-message**: Displays toast notifications.
+- **react-native-web**: Enables React Native components to run on the web.
+- **yup**: Schema validation library for form validation.
+- **zustand**: State management library.
+
+#### DevDependencies
+
+- **@babel/core**: Babel compiler for JavaScript.
+- **@testing-library/jest-native**: Extends Jest assertions for React Native.
+- **@testing-library/react-native**: Testing utilities for React Native components.
+- **@types/jest**: TypeScript types for Jest.
+- **@types/react**: TypeScript types for React.
+- **@types/react-test-renderer**: TypeScript types for React Test Renderer.
+- **jest**: JavaScript testing framework.
+- **jest-expo**: Jest preset for Expo projects.
+- **react-test-renderer**: Renderer for testing React components.
+- **tailwindcss**: Utility-first CSS framework.
+- **typescript**: Adds type safety to JavaScript.
+
 
 ## Getting Started
 
