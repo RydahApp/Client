@@ -5,6 +5,7 @@ import NavHeader from "./ui/NavHeader";
 import ProductItem from "./shop/ProductItem";
 import CustomButton from "./ui/CustomizeButton";
 import StarRate from "./ui/StarRate";
+import RangeSlider from "./auth/RangeSlider";
 
 export {
   CustomButton,
@@ -13,5 +14,6 @@ export {
   StarRate,
   CustomizeSwitch,
   Topheader,
+  RangeSlider,
   NavHeader,
 };
