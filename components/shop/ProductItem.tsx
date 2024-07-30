@@ -1,4 +1,4 @@
-import { formatNGNCurrency } from "@/helpers";
+import { formatGBPCurrency } from "@/helpers";
 import useFavouriteStore from "@/store/favorite";
 import { Product } from "@/types";
 import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
@@ -54,7 +54,7 @@ const ProductItem: React.FC<ProductType> = ({ data }) => {
               className="text-xs font-medium text-[#212121]"
               testID="product-price"
             >
-              {formatNGNCurrency(data.price)}
+              {formatGBPCurrency(data.price)}
             </Text>
             <TouchableOpacity
               testID="heart-icon"

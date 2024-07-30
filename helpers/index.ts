@@ -6,15 +6,15 @@ export const handleExternalLink = (url: string) => {
   WebBrowser.openBrowserAsync(url);
 };
 
-export const formatNGNCurrency = (value: number) => {
-  const formattedValue = new Intl.NumberFormat("en-NG", {
+export const formatGBPCurrency = (value: number) => {
+  const formattedValue = new Intl.NumberFormat("en-GB", {
     style: "currency",
-    currency: "NGN",
+    currency: "GBP",
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(value);
 
-  return formattedValue.replace("₦", "₦ ");
+  return formattedValue.replace("£", "£ ");
 };
 
 export function cardNumberFormatter(

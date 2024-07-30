@@ -16,7 +16,7 @@ import { brandData, shopData } from "@/constants/data";
 import { Product } from "@/types";
 import useFavouriteStore from "@/store/favorite";
 import Toast from "react-native-toast-message";
-import { formatNGNCurrency } from "@/helpers";
+import { formatGBPCurrency } from "@/helpers";
 import { AntDesign, Entypo, FontAwesome5 } from "@expo/vector-icons";
 import { CustomButton, RangeSlider } from "@/components";
 
@@ -274,7 +274,7 @@ const ProductItemComponet: React.FC<{
           </Text>
           <View className="flex-row items-center justify-between">
             <Text className="text-xs font-medium text-[#212121]">
-              {formatNGNCurrency(data.price)}
+              {formatGBPCurrency(data.price)}
             </Text>
             <TouchableOpacity onPress={() => handleToggleFavourite(data)}>
               {isFavourite ? (

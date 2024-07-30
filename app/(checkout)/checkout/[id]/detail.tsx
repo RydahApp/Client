@@ -10,7 +10,7 @@ import {
   FontAwesome5,
   MaterialIcons,
 } from "@expo/vector-icons";
-import { Fee, formatNGNCurrency } from "@/helpers";
+import { Fee, formatGBPCurrency } from "@/helpers";
 import { CustomButton } from "@/components";
 import { useState } from "react";
 import { icons, images } from "@/constants";
@@ -116,7 +116,7 @@ const CheckoutScreen = () => {
               {data.title}
             </Text>
             <Text className="text-xl font-normal text-black">
-              {formatNGNCurrency(data.price)}
+              {formatGBPCurrency(data.price)}
             </Text>
           </View>
           <View className="flex-row items-center justify-end space-x-5">
@@ -136,7 +136,7 @@ const CheckoutScreen = () => {
           <View className="flex-row items-center justify-between space-x-2 w-full border border-primary p-3 rounded-lg">
             <Text className="text-sm text-black font-normal">Item price</Text>
             <Text className="text-sm text-[#6B5656] font-medium">
-              {formatNGNCurrency(totalPrice)}
+              {formatGBPCurrency(totalPrice)}
             </Text>
           </View>
           <View className="flex-row items-center justify-between space-x-2 w-full border border-primary p-3 rounded-lg">
@@ -144,13 +144,13 @@ const CheckoutScreen = () => {
               Buyer protection fee
             </Text>
             <Text className="text-sm text-[#6B5656] font-medium">
-              {formatNGNCurrency(totalPrice)}
+              {formatGBPCurrency(totalPrice)}
             </Text>
           </View>
           <View className="flex-row items-center justify-between space-x-2 w-full border border-primary p-3 rounded-lg">
             <Text className="text-sm text-black font-normal">Delivery fee</Text>
             <Text className="text-sm text-[#6B5656] font-medium">
-              {formatNGNCurrency(totalPrice)}
+              {formatGBPCurrency(totalPrice)}
             </Text>
           </View>
         </View>
@@ -173,7 +173,7 @@ const CheckoutScreen = () => {
         <View className="flex-row items-center justify-between space-x-2 w-full border border-primary p-3 rounded-lg">
           <Text className="text-sm text-black font-normal">Total</Text>
           <Text className="text-sm text-[#6B5656] font-medium">
-            {formatNGNCurrency(totalPrice)}
+            {formatGBPCurrency(totalPrice)}
           </Text>
         </View>
         <View className="w-full p-4 bg-[#FFF7F7] rounded-lg border border-black flex-col items-start justify-start space-y-2">

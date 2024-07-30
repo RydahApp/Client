@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
-import { formatNGNCurrency } from "@/helpers";
+import { formatGBPCurrency } from "@/helpers";
 import { Product } from "@/types";
 import ProductItem from "@/components/shop/ProductItem";
 
@@ -31,7 +31,7 @@ describe("ProductItem Component", () => {
 
     // Check if the price is formatted correctly
     expect(getByTestId("product-price").props.children).toBe(
-      formatNGNCurrency(sampleProduct.price)
+      formatGBPCurrency(sampleProduct.price)
     );
 
     // Check if the image is rendered

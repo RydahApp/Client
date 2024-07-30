@@ -2,7 +2,7 @@ import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { shopData } from "@/constants/data";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { cardNumberFormatter, expirationDateFormatter, Fee, formatNGNCurrency } from "@/helpers";
+import { cardNumberFormatter, expirationDateFormatter, Fee, formatGBPCurrency } from "@/helpers";
 import { Entypo } from "@expo/vector-icons";
 import { icons, images } from "@/constants";
 import { useFormik } from "formik";
@@ -68,7 +68,7 @@ const PaymentScreen = () => {
         </View>
         <View className="w-full flex-col items-center justify-center space-y-5 pt-8">
           <Text className="text-3xl font-bold text-black">
-            {formatNGNCurrency(totalPrice)}
+            {formatGBPCurrency(totalPrice)}
           </Text>
           <View className="flex-row items-start justify-between space-x-4 w-full px-4 border border-primary py-2 bg-primary rounded-lg">
             <View className="flex-row items-center space-x-3">

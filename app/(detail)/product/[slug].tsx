@@ -20,7 +20,7 @@ import {
   FontAwesome,
   FontAwesome6,
 } from "@expo/vector-icons";
-import { Fee, formatNGNCurrency } from "@/helpers";
+import { Fee, formatGBPCurrency } from "@/helpers";
 import { CustomButton, CustomizeSwitch, StarRate } from "@/components";
 import { icons } from "@/constants";
 import useFavouriteStore from "@/store/favorite";
@@ -193,7 +193,7 @@ const ProductdetailScreen = () => {
                 {data.title}
               </Text>
               <Text className="text-xl font-normal text-black">
-                {formatNGNCurrency(data.price)}
+                {formatGBPCurrency(data.price)}
               </Text>
             </View>
             <View className="flex-row items-center justify-end space-x-5">
@@ -247,7 +247,7 @@ const ProductdetailScreen = () => {
             </View>
             <View className="h-14 px-4 bg-[#FFFAFA] border border-primary flex-row items-center justify-center rounded-md">
               <Text className="text-2xl font-normal text-black">
-                {formatNGNCurrency(totalPrice)}
+                {formatGBPCurrency(totalPrice)}
               </Text>
             </View>
           </View>
