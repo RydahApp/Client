@@ -3,20 +3,25 @@ import { router, useLocalSearchParams } from "expo-router";
 import { shopData } from "@/constants/data";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
+  AntDesign,
   Entypo,
   Feather,
   FontAwesome,
   FontAwesome5,
   MaterialIcons,
 } from "@expo/vector-icons";
-import { Fee, formatNGNCurrency } from "@/helpers";
+import { Fee, formatGBPCurrency } from "@/helpers";
 import { CustomButton } from "@/components";
 import { useState } from "react";
 import { icons, images } from "@/constants";
+import useFavouriteStore from "@/store/favorite";
+import { Product } from "@/types";
+import Toast from "react-native-toast-message";
 
 const CheckoutScreen = () => {
   const { id } = useLocalSearchParams<{ id?: string }>();
   const [shippingMethod, setShippingMethod] = useState("Collection");
+  const { toggleFavourite, favouriteItems } = useFavouriteStore();
 
   const data = shopData.find((item) => item.id === id);
 
@@ -67,6 +72,21 @@ const CheckoutScreen = () => {
     },
   ];
 
+  const handleToggleFavourite = (product: Product) => {
+    const productWithQuantity = { ...product, quantity: 1 };
+
+    const isFavourite = favouriteItems.some((item) => item.id === product.id);
+
+    toggleFavourite(productWithQuantity);
+    Toast.show({
+      type: "success",
+      text1: isFavourite ? "Removed from Favourite" : "Added to Favourite",
+      visibilityTime: 1000,
+    });
+  };
+
+  const isFavourite = favouriteItems.some((item) => item.id === data.id);
+
   return (
     <SafeAreaView className="bg-white flex-1">
       <ScrollView
@@ -96,12 +116,16 @@ const CheckoutScreen = () => {
               {data.title}
             </Text>
             <Text className="text-xl font-normal text-black">
-              {formatNGNCurrency(data.price)}
+              {formatGBPCurrency(data.price)}
             </Text>
           </View>
           <View className="flex-row items-center justify-end space-x-5">
-            <TouchableOpacity>
-              <FontAwesome name="heart" size={24} color="black" />
+            <TouchableOpacity onPress={() => handleToggleFavourite(data)}>
+              {isFavourite ? (
+                <AntDesign name="heart" size={24} color="#FFCCCC" />
+              ) : (
+                <FontAwesome5 name="heart" size={24} color="#FFCCCC" />
+              )}
             </TouchableOpacity>
             <TouchableOpacity>
               <Feather name="share-2" size={24} color="black" />
@@ -112,7 +136,7 @@ const CheckoutScreen = () => {
           <View className="flex-row items-center justify-between space-x-2 w-full border border-primary p-3 rounded-lg">
             <Text className="text-sm text-black font-normal">Item price</Text>
             <Text className="text-sm text-[#6B5656] font-medium">
-              {formatNGNCurrency(totalPrice)}
+              {formatGBPCurrency(totalPrice)}
             </Text>
           </View>
           <View className="flex-row items-center justify-between space-x-2 w-full border border-primary p-3 rounded-lg">
@@ -120,13 +144,13 @@ const CheckoutScreen = () => {
               Buyer protection fee
             </Text>
             <Text className="text-sm text-[#6B5656] font-medium">
-              {formatNGNCurrency(totalPrice)}
+              {formatGBPCurrency(totalPrice)}
             </Text>
           </View>
           <View className="flex-row items-center justify-between space-x-2 w-full border border-primary p-3 rounded-lg">
             <Text className="text-sm text-black font-normal">Delivery fee</Text>
             <Text className="text-sm text-[#6B5656] font-medium">
-              {formatNGNCurrency(totalPrice)}
+              {formatGBPCurrency(totalPrice)}
             </Text>
           </View>
         </View>
@@ -149,7 +173,7 @@ const CheckoutScreen = () => {
         <View className="flex-row items-center justify-between space-x-2 w-full border border-primary p-3 rounded-lg">
           <Text className="text-sm text-black font-normal">Total</Text>
           <Text className="text-sm text-[#6B5656] font-medium">
-            {formatNGNCurrency(totalPrice)}
+            {formatGBPCurrency(totalPrice)}
           </Text>
         </View>
         <View className="w-full p-4 bg-[#FFF7F7] rounded-lg border border-black flex-col items-start justify-start space-y-2">

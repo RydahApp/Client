@@ -7,10 +7,6 @@ const DetailLayout = () => {
       <Stack>
         <Stack.Screen name="product/[slug]" options={{ headerShown: false }} />
         <Stack.Screen
-          name="productfavourite/[slug]"
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
           name="category/[genre]/detail"
           options={{ headerShown: false }}
         />

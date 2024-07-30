@@ -1,13 +1,12 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import React from "react";
-import { icons } from "@/constants";
 import { FontAwesome5, Fontisto } from "@expo/vector-icons";
 import { router } from "expo-router";
 
 const NavHeader = () => {
   return (
-    <View className="w-full px-5 flex-row items-center justify-between">
-      <View className="relative flex-row space-x-3 items-center justify-start">
+    <View className="w-full px-5 flex-row items-center justify-end">
+      {/* <View className="relative flex-row space-x-3 items-center justify-start">
         <View className="relative w-14 h-14 flex-row items-center justify-center bg-primary rounded-full">
           <Image
             source={icons.avatarIcon}
@@ -20,7 +19,7 @@ const NavHeader = () => {
           <Text className="text-lg font-normal text-black">Aisha Uthman</Text>
           <Text className="text-xs font-medium text-black">Aisha Ventures</Text>
         </View>
-      </View>
+      </View> */}
       <View className="flex-row items-center justify-end space-x-6">
         <TouchableOpacity testID="heart-button" onPress={() => router.push("/myfavourites")}>
           <FontAwesome5 name="heart" size={24} color="black" />

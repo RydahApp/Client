@@ -16,7 +16,7 @@ import { brandData, shopData } from "@/constants/data";
 import { Product } from "@/types";
 import useFavouriteStore from "@/store/favorite";
 import Toast from "react-native-toast-message";
-import { formatNGNCurrency } from "@/helpers";
+import { formatGBPCurrency } from "@/helpers";
 import { AntDesign, Entypo, FontAwesome5 } from "@expo/vector-icons";
 import { CustomButton, RangeSlider } from "@/components";
 
@@ -91,7 +91,7 @@ const GenreDetail = () => {
           <TouchableOpacity
             onPress={() => {
               setShowFilter(true);
-              Keyboard.dismiss()
+              Keyboard.dismiss();
             }}
             className="absolute top-[32%] right-[5%]"
           >
@@ -239,22 +239,21 @@ const ProductItemComponet: React.FC<{
   const navigateToDetailPage = (slug: string) => {
     router.push(`/product/${slug}`);
   };
-  const [addingToFavourite, setAddingToFavourite] = useState(false);
-  const { addToFavourite } = useFavouriteStore();
+  const { toggleFavourite, favouriteItems } = useFavouriteStore();
 
-  const handleAddToFavourite = (product: Product) => {
+  const handleToggleFavourite = (product: Product) => {
     const productWithQuantity = { ...product, quantity: 1 };
-    setAddingToFavourite(true);
-    addToFavourite(productWithQuantity);
+    const isFavourite = favouriteItems.some((item) => item.id === data.id);
+
+    toggleFavourite(productWithQuantity);
     Toast.show({
       type: "success",
-      text1: "Added to Favourite",
+      text1: isFavourite ? "Removed from Favourite" : "Added to Favourite",
       visibilityTime: 1000,
     });
-    setTimeout(() => {
-      setAddingToFavourite(false);
-    }, 1000);
   };
+
+  const isFavourite = favouriteItems.some((item) => item.id === data.id);
 
   return (
     <View className="pb-3 mr-5">
@@ -275,10 +274,10 @@ const ProductItemComponet: React.FC<{
           </Text>
           <View className="flex-row items-center justify-between">
             <Text className="text-xs font-medium text-[#212121]">
-              {formatNGNCurrency(data.price)}
+              {formatGBPCurrency(data.price)}
             </Text>
-            <TouchableOpacity onPress={() => handleAddToFavourite(data)}>
-              {addingToFavourite ? (
+            <TouchableOpacity onPress={() => handleToggleFavourite(data)}>
+              {isFavourite ? (
                 <AntDesign name="heart" size={20} color="#FFCCCC" />
               ) : (
                 <FontAwesome5 name="heart" size={14} color="#FFCCCC" />

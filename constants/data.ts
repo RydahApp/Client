@@ -134,6 +134,62 @@ export const categoryItem = [
     category: "Dress",
     price: 3000,
   },
+  {
+    id: "#000128u1289y9eh12bdkigascdvsjhv",
+    icon: require("@/assets/icons/memberIcon1.png"),
+    title: "Bags",
+    category: "Bags",
+    price: 8000,
+  },
+  {
+    id: "#000228u2289y9eh22bdkigascdvsjhv",
+    icon: require("@/assets/icons/memberIcon2.png"),
+    title: "Jewelries",
+    category: "Jewelries",
+    price: 2000,
+  },
+  {
+    id: "#000328u3289y9eh32bdkigascdvsjhv",
+    icon: require("@/assets/icons/memberIcon3.png"),
+    title: "Kids",
+    category: "Kids",
+    price: 1000,
+  },
+  {
+    id: "#000428u4289y9eh42bdkigascdvsjhv",
+    icon: require("@/assets/icons/memberIcon4.png"),
+    title: "Clothings",
+    category: "Clothings",
+    price: 5000,
+  },
+  {
+    id: "#000528u5289y9eh52bdkigascdvsjhv",
+    icon: require("@/assets/icons/memberIcon5.png"),
+    title: "Hair accessories",
+    category: "Hair accessories",
+    price: 5000,
+  },
+  {
+    id: "#000628u6289y9eh62bdkigascdvsjhv",
+    icon: require("@/assets/icons/memberIcon6.png"),
+    title: "Kitchen utensils",
+    category: "Kitchen utensils",
+    price: 500,
+  },
+  {
+    id: "#000728u7289y9eh72bdkigascdvsjhv",
+    icon: require("@/assets/icons/memberIcon7.png"),
+    title: "Frangrances",
+    category: "Frangrances",
+    price: 3000,
+  },
+  {
+    id: "#000828u1289y9eh12bdkigascdvsjhv",
+    icon: require("@/assets/icons/memberIcon8.png"),
+    title: "Skincare",
+    category: "Skincare",
+    price: 2000,
+  },
 ];
 
 export const memberItem = [
