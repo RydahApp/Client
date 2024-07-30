@@ -125,18 +125,18 @@ const GenreDetail = () => {
                 </Text>
                 <CustomButton
                   title={
-                    <View className="flex-row items-center justify-center space-x-2">
-                      <Text className="text-base text-black font-medium">
+                    <View className="flex-row items-end justify-center space-x-2">
+                      <Text className="text-base text-primary font-medium">
                         Go Back
                       </Text>
                       <FontAwesome6
                         name="arrow-right-long"
                         size={18}
-                        color="black"
+                        color="#ffcccc"
                       />
                     </View>
                   }
-                  containerStyles="bg-primary !w-fit py-3 !px-8 rounded-full"
+                  containerStyles="bg-transparent !w-fit py-3 !px-8 rounded-full"
                   titleStyle="text-base font-medium text-black"
                   handlePress={() => router.back()}
                 />

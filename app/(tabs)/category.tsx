@@ -77,14 +77,14 @@ const CategoryScreen = () => {
                     </Text>
                     <CustomButton
                       title={
-                        <View className="flex-row items-center justify-center space-x-2">
-                          <Text className="text-base text-black font-medium">
+                        <View className="flex-row items-end justify-center space-x-2">
+                          <Text className="text-base text-primary font-medium">
                             Go Back
                           </Text>
                           <FontAwesome6
                             name="arrow-right-long"
                             size={18}
-                            color="black"
+                            color="#ffcccc"
                           />
                         </View>
                       }
