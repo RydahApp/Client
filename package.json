@@ -6,6 +6,7 @@
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
     "postinstall": "node ./scripts/create-nativewind.js",
+    "preinstall": "npx npm-force-resolutions",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
@@ -55,6 +56,7 @@
     "@types/react-test-renderer": "^18.0.7",
     "jest": "^29.2.1",
     "jest-expo": "~51.0.3",
+    "npm-force-resolutions": "^0.0.10",
     "react-test-renderer": "18.2.0",
     "tailwindcss": "3.3.2",
     "typescript": "~5.3.3"
