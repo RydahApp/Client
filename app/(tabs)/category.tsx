@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { icons, images } from "@/constants";
-import {  categoryItem, memberItem } from "@/constants/data";
+import { categoryItem, memberItem } from "@/constants/data";
 import { categoryItemType } from "@/types";
 import { Entypo } from "@expo/vector-icons";
 import { router } from "expo-router";
@@ -16,6 +16,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { KeyboardAvoidingView } from "react-native";
+import { CustomButton } from "@/components";
 
 interface Tab {
   text: string;
@@ -25,7 +26,7 @@ interface Tab {
 
 const tabs: Tab[] = [
   { text: "Items", tabIcon: icons.focusedCartIcon, data: categoryItem },
-  { text: "Members", tabIcon: icons.memberIcon, data: memberItem },
+  // { text: "Members", tabIcon: icons.memberIcon, data: memberItem },
 ];
 
 const CategoryScreen = () => {
@@ -38,15 +39,15 @@ const CategoryScreen = () => {
     setTabData(tab.data);
   };
 
-  const renderSearchItem = ({ item }: { item: categoryItemType }) => {
-    if (categoryTab === "Items") {
-      return <ItemsTab item={item} />;
-    } else if (categoryTab === "Members") {
-      return <MemberTab item={item} />;
-    } else {
-      return null;
-    }
-  };
+  // const renderSearchItem = ({ item }: { item: categoryItemType }) => {
+  //   if (categoryTab === "Items") {
+  //     return ;
+  //   } else if (categoryTab === "Members") {
+  //     return <MemberTab item={item} />;
+  //   } else {
+  //     return null;
+  //   }
+  // };
 
   const filteredData = tabData
     ? (tabData as categoryItemType[]).filter((item) =>
@@ -112,7 +113,7 @@ const CategoryScreen = () => {
             <View className="w-full">
               <FlatList
                 data={filteredData}
-                renderItem={renderSearchItem}
+                renderItem={({ item }) => <ItemsTab item={item} />}
                 keyExtractor={(_, index) => index.toString()}
                 contentContainerStyle={{ flexGrow: 1, paddingBottom: 380 }}
                 showsVerticalScrollIndicator={false}
@@ -122,6 +123,12 @@ const CategoryScreen = () => {
                     <Text className="text-base text-center font-normal text-black my-6">
                       Search result not found
                     </Text>
+                    <CustomButton
+                      title="Go Back"
+                      containerStyles="bg-primary !w-fit py-3 !px-8 rounded-full"
+                      titleStyle="text-base font-medium text-black"
+                      handlePress={() => setSearchQuery("")}
+                    />
                   </View>
                 )}
               />
@@ -154,26 +161,26 @@ const ItemsTab: React.FC<{ item: categoryItemType }> = ({ item }) => {
   );
 };
 
-const MemberTab: React.FC<{ item: categoryItemType }> = ({ item }) => {
-  return (
-    <View className="w-full flex-col items-start justify-start border bg-[#FFFAFA] p-4 border-primary rounded-md mb-3">
-      <TouchableOpacity
-        onPress={() => router.push(`/category/${item.category}/detail`)}
-        className="w-full flex-row items-center justify-between rounded-lg"
-      >
-        <View className="flex-row items-center justify-start space-x-3">
-          <Image
-            source={item.icon}
-            alt={`${item.title} icon`}
-            resizeMode="contain"
-          />
-          <Text className="tex-sm font-medium text-grey-700">{item.title}</Text>
-        </View>
+// const MemberTab: React.FC<{ item: categoryItemType }> = ({ item }) => {
+//   return (
+//     <View className="w-full flex-col items-start justify-start border bg-[#FFFAFA] p-4 border-primary rounded-md mb-3">
+//       <TouchableOpacity
+//         onPress={() => router.push(`/category/${item.category}/detail`)}
+//         className="w-full flex-row items-center justify-between rounded-lg"
+//       >
+//         <View className="flex-row items-center justify-start space-x-3">
+//           <Image
+//             source={item.icon}
+//             alt={`${item.title} icon`}
+//             resizeMode="contain"
+//           />
+//           <Text className="tex-sm font-medium text-grey-700">{item.title}</Text>
+//         </View>
 
-        <Entypo name="chevron-thin-right" size={20} color="#4E4E4E" />
-      </TouchableOpacity>
-    </View>
-  );
-};
+//         <Entypo name="chevron-thin-right" size={20} color="#4E4E4E" />
+//       </TouchableOpacity>
+//     </View>
+//   );
+// };
 
 export default CategoryScreen;

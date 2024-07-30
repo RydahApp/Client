@@ -6,10 +6,12 @@ import {
   Platform,
   UIManager,
   TouchableOpacity,
+  Dimensions,
+  Image,
+  LayoutAnimation,
 } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Image } from "react-native";
 import { shopData } from "@/constants/data";
 import {
   AntDesign,
@@ -21,10 +23,10 @@ import {
 import { Fee, formatNGNCurrency } from "@/helpers";
 import { CustomButton, CustomizeSwitch, StarRate } from "@/components";
 import { icons } from "@/constants";
-import { LayoutAnimation } from "react-native";
 import useFavouriteStore from "@/store/favorite";
 import Toast from "react-native-toast-message";
 import { Product } from "@/types";
+import { FlatList } from "react-native";
 
 if (
   Platform.OS === "android" &&
@@ -33,32 +35,68 @@ if (
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
+const { width } = Dimensions.get("window");
+
 const ProductdetailScreen = () => {
   const { slug } = useLocalSearchParams<{ slug?: string }>();
-  const [count, setCount] = useState(1);
-  const [showFee, setShowFee] = useState(true);
-  const [dropDown, setDropDown] = useState({
-    description: true,
-    rate: false,
-  });
-  const [addingToFavourite, setAddingToFavourite] = useState(false);
-  const { addToFavourite } = useFavouriteStore();
-  const descriptionRef = useRef<View>(null);
-  const scrollViewRef = useRef<ScrollView>(null);
-
   const data = shopData.find((item) => item.id === slug);
 
   if (!data) return;
+  // const [count, setCount] = useState(1);
+  const [showFee, setShowFee] = useState(true);
+  const [dropDown, setDropDown] = useState({
+    description: true,
+  });
+  const { toggleFavourite, favouriteItems } = useFavouriteStore();
+  const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
+  const ref = useRef<any>();
+  const descriptionRef = useRef<View>(null);
+  const scrollViewRef = useRef<ScrollView>(null);
 
-  const decrementCount = () => {
-    if (count > 0) {
-      setCount(count - 1);
+  const slideImages = [
+    {
+      img: data.product_image,
+    },
+    {
+      img: data.product_image,
+    },
+    {
+      img: data.product_image,
+    },
+  ];
+
+  const updateCurrentSlideIndex = (e: any) => {
+    const contentOffsetX = e.nativeEvent.contentOffset.x;
+    const currentIndex = Math.round(contentOffsetX / width);
+    setCurrentSlideIndex(currentIndex);
+  };
+
+  const goToNextSlide = () => {
+    const nextSlideIndex = currentSlideIndex + 1;
+    if (nextSlideIndex != slideImages.length) {
+      const offset = nextSlideIndex * width;
+      ref?.current.scrollToOffset({ offset });
+      setCurrentSlideIndex(currentSlideIndex + 1);
+    }
+  };
+  const goToPrevSlide = () => {
+    const nextSlideIndex = currentSlideIndex - 1;
+    if (nextSlideIndex >= 0) {
+      const offset = nextSlideIndex * width;
+      ref?.current.scrollToOffset({ offset });
+      setCurrentSlideIndex(nextSlideIndex);
     }
   };
 
-  const incrementCount = () => {
-    setCount(count + 1);
-  };
+  // const decrementCount = () => {
+  //   if (count > 0) {
+  //     setCount(count - 1);
+  //   }
+  // };
+
+  // const incrementCount = () => {
+  //   setCount(count + 1);
+  // };
 
   const toggleDropdown = (key: keyof typeof dropDown) => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
@@ -80,19 +118,19 @@ const ProductdetailScreen = () => {
 
   const totalPrice = data.price + Fee;
 
-  const handleAddToFavourite = (product: Product) => {
-    const productWithQuantity = { ...product, quantity: count };
-    setAddingToFavourite(true);
-    addToFavourite(productWithQuantity);
+  const handleToggleFavourite = (product: Product) => {
+    const productWithQuantity = { ...product, quantity: 1 };
+    const isFavourite = favouriteItems.some((item) => item.id === product.id);
+
+    toggleFavourite(productWithQuantity);
     Toast.show({
       type: "success",
-      text1: "Added to Favourite",
+      text1: isFavourite ? "Removed from Favourite" : "Added to Favourite",
       visibilityTime: 1000,
     });
-    setTimeout(() => {
-      setAddingToFavourite(false);
-    }, 1000);
   };
+
+  const isFavourite = favouriteItems.some((item) => item.id === data.id);
 
   return (
     <SafeAreaView className="bg-white flex-1">
@@ -102,19 +140,52 @@ const ProductdetailScreen = () => {
           paddingBottom: 15,
         }}
       >
-        <View className="w-full h-[350px] relative">
-          <Image
-            source={data.product_image}
-            resizeMode="cover"
-            className="w-full h-full"
+        <View className="w-full h-[350px]">
+          <FlatList
+            ref={ref}
+            onMomentumScrollEnd={updateCurrentSlideIndex}
+            contentContainerStyle={{ height: "100%" }}
+            showsHorizontalScrollIndicator={false}
+            horizontal
+            data={slideImages}
+            pagingEnabled
+            renderItem={({ item }) => (
+              <View
+                style={{ width: width }}
+                className="w-full h-[350px] relative"
+              >
+                <Image
+                  source={data.product_image}
+                  resizeMode="cover"
+                  className="w-full h-full"
+                />
+                <TouchableOpacity
+                  onPress={() => router.back()}
+                  className="absolute top-4 left-4"
+                >
+                  <Entypo name="chevron-thin-left" size={24} color="white" />
+                </TouchableOpacity>
+                <View
+                  style={{ width: width }}
+                  className="flex-row justify-center items-center my-6 space-x-2 absolute bottom-4 right-0"
+                >
+                  {/* Render indicator */}
+                  {slideImages.map((_, index) => (
+                    <View
+                      key={index}
+                      className={`h-2 rounded-full ${
+                        currentSlideIndex == index
+                          ? "bg-white w-6"
+                          : "w-2 bg-white/50"
+                      }`}
+                    />
+                  ))}
+                </View>
+              </View>
+            )}
           />
-          <TouchableOpacity
-            onPress={() => router.back()}
-            className="absolute top-4 left-4"
-          >
-            <Entypo name="chevron-thin-left" size={24} color="white" />
-          </TouchableOpacity>
         </View>
+
         <View className="w-full py-5 px-5 flex-col items-start justify-start space-y-6">
           <View className="w-full flex-row items-start justify-between">
             <View className="flex-col items-start justify-start space-y-1">
@@ -126,9 +197,9 @@ const ProductdetailScreen = () => {
               </Text>
             </View>
             <View className="flex-row items-center justify-end space-x-5">
-              <TouchableOpacity onPress={() => handleAddToFavourite(data)}>
-                {addingToFavourite ? (
-                  <AntDesign name="heart" size={20} color="#FFCCCC" />
+              <TouchableOpacity onPress={() => handleToggleFavourite(data)}>
+                {isFavourite ? (
+                  <AntDesign name="heart" size={24} color="#FFCCCC" />
                 ) : (
                   <FontAwesome name="heart" size={24} color="black" />
                 )}
@@ -148,7 +219,7 @@ const ProductdetailScreen = () => {
                 Brand: Classical
               </Text>
             </View>
-            <View className="bg-primary border border-primary flex-row justify-between py-2 px-3 w-[102px] rounded-full">
+            {/* <View className="bg-primary border border-primary flex-row justify-between py-2 px-3 w-[102px] rounded-full">
               <TouchableOpacity onPress={decrementCount}>
                 <AntDesign name="minus" size={16} color="#121212" />
               </TouchableOpacity>
@@ -156,7 +227,7 @@ const ProductdetailScreen = () => {
               <TouchableOpacity onPress={incrementCount}>
                 <AntDesign name="plus" size={16} color="#121212" />
               </TouchableOpacity>
-            </View>
+            </View> */}
           </View>
           <View className="w-full flex-row space-x-4 items-start justify-between">
             <View className="flex-row items-start justify-start space-x-2">
@@ -245,39 +316,6 @@ const ProductdetailScreen = () => {
                 </Text>
               </View>
             </View>
-            <View className="w-full flex-col items-start justify-start border border-[#E4E7EC] rounded-lg">
-              <TouchableOpacity
-                onPress={() => toggleDropdown("rate")}
-                className="w-full flex-row items-center justify-between p-4 rounded-lg"
-              >
-                <Text className="tex-sm font-medium text-black">
-                  Product ratings and comments
-                </Text>
-                <View className="w-8 h-8 border border-[#98A2B3] flex-row items-center justify-center rounded">
-                  <Entypo name="chevron-thin-right" size={16} color="black" />
-                </View>
-              </TouchableOpacity>
-              <View
-                ref={descriptionRef}
-                className={`w-full overflow-hidden transition-all duration-300 ${
-                  dropDown.rate === true
-                    ? "max-h-[1000px] px-4 pb-4"
-                    : "max-h-0"
-                }`}
-              >
-                <View className="flex-row items-center justify-start space-x-3">
-                  <Text className="text-sm font-semibold text-[#98A2B3]">
-                    5.0
-                  </Text>
-                  <View>
-                    <StarRate starIndex={5} totalStar={5} />
-                  </View>
-                  <Text className="text-sm font-semibold text-[#98A2B3]">
-                    (27)
-                  </Text>
-                </View>
-              </View>
-            </View>
           </View>
           <View className="w-full flex-col items-start justify-start border border-[#E4E7EC] rounded-lg p-4">
             <View className="w-full flex-row items-center justify-start space-x-3">
@@ -288,14 +326,10 @@ const ProductdetailScreen = () => {
                 className="w-8 h-8"
               />
               <View className="flex-col items-start justify-start space-y-1">
-                <Text className="text-sm font-medium text-black">
-                  Honey feed Collections
-                </Text>
                 <View className="flex-row items-center space-x-3">
                   <Text className="text-sm font-medium text-black">
                     Umu Aisha
                   </Text>
-                  <Text className="text-[#997A7A] pl-3">Ilorin Nigeria</Text>
                 </View>
               </View>
             </View>
@@ -321,13 +355,13 @@ const ProductdetailScreen = () => {
               titleStyle="text-base font-medium text-black"
             />
             <CustomButton
-              handlePress={() => handleAddToFavourite(data)}
+              handlePress={() => handleToggleFavourite(data)}
               title={
                 <View className="flex-row items-center justify-center space-x-2 w-full">
                   <Text className="text-base text-black font-medium">
                     Add seller to favourite
                   </Text>
-                  {addingToFavourite ? (
+                  {isFavourite ? (
                     <AntDesign name="heart" size={24} color="#FFCCCC" />
                   ) : (
                     <FontAwesome6 name="heart" size={24} color="black" />

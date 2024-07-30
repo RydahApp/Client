@@ -3,7 +3,6 @@ import useFavouriteStore from "@/store/favorite";
 import { Product } from "@/types";
 import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 import { router } from "expo-router";
-import { useState } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import Toast from "react-native-toast-message";
 
@@ -12,25 +11,22 @@ type ProductType = {
 };
 
 const ProductItem: React.FC<ProductType> = ({ data }) => {
-  const [addingToFavourite, setAddingToFavourite] = useState(false);
-  const { addToFavourite } = useFavouriteStore();
+  const { toggleFavourite, favouriteItems } = useFavouriteStore();
   const navigateToDetailPage = (slug: string) => {
     router.push(`/product/${slug}`);
   };
 
-  const handleAddToFavourite = (product: Product) => {
+  const handleToggleFavourite = (product: Product) => {
     const productWithQuantity = { ...product, quantity: 1 };
-    setAddingToFavourite(true);
-    addToFavourite(productWithQuantity);
+    toggleFavourite(productWithQuantity);
     Toast.show({
       type: "success",
-      text1: "Added to Favourite",
+      text1: isFavourite ? "Removed from Favourite" : "Added to Favourite",
       visibilityTime: 1000,
     });
-    setTimeout(() => {
-      setAddingToFavourite(false);
-    }, 1000);
   };
+
+  const isFavourite = favouriteItems.some((item) => item.id === data.id);
 
   return (
     <View className="mx-auto pb-3">
@@ -62,10 +58,10 @@ const ProductItem: React.FC<ProductType> = ({ data }) => {
             </Text>
             <TouchableOpacity
               testID="heart-icon"
-              onPress={() => handleAddToFavourite(data)}
+              onPress={() => handleToggleFavourite(data)}
             >
-              {addingToFavourite ? (
-                <AntDesign name="heart" size={20} color="#FFCCCC" />
+              {isFavourite ? (
+                <AntDesign name="heart" size={14} color="#FFCCCC" />
               ) : (
                 <FontAwesome5 name="heart" size={14} color="#FFCCCC" />
               )}

@@ -74,7 +74,7 @@ const FavouriteProductItem: React.FC<{
   data: Product;
 }> = ({ data }) => {
   const navigateToDetailPage = (slug: string) => {
-    router.push(`/productfavourite/${slug}`);
+    router.push(`/product/${slug}`);
   };
 
   const { deleteFavouriteItem } = useFavouriteStore();

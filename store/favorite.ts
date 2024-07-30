@@ -5,10 +5,10 @@ import { Product } from "@/types";
 
 interface FavouriteState {
   favouriteItems: Product[];
-  addToFavourite: (product: Product) => void;
+  toggleFavourite: (product: Product) => void;
   deleteFavouriteItem: (itemId: string) => void;
-  handleDecrement: (itemId: string) => void;
-  handleIncrement: (itemId: string) => void;
+  // handleDecrement: (itemId: string) => void;
+  // handleIncrement: (itemId: string) => void;
   resetFavourite: () => void;
 }
 
@@ -16,19 +16,20 @@ const useFavouriteStore = create<FavouriteState>(
   persist(
     (set) => ({
       favouriteItems: [],
-      addToFavourite: (product: Product) =>
+      toggleFavourite: (product: Product) =>
         set((state: FavouriteState) => {
           const existingIndex = state.favouriteItems.findIndex(
             (item) => item.id === product.id
           );
 
           if (existingIndex !== -1) {
-            // Product already exists, update quantity
-            const updatedFavouriteItems = [...state.favouriteItems];
-            updatedFavouriteItems[existingIndex].quantity += product.quantity;
+            // Product already exists, remove it
+            const updatedFavouriteItems = state.favouriteItems.filter(
+              (item) => item.id !== product.id
+            );
             return { favouriteItems: updatedFavouriteItems };
           } else {
-            // Product doesn't exist, add a new entry
+            // Product doesn't exist, add it
             return { favouriteItems: [...state.favouriteItems, product] };
           }
         }),
@@ -39,45 +40,45 @@ const useFavouriteStore = create<FavouriteState>(
           );
           return { favouriteItems: updatedFavouriteItems };
         }),
-      handleDecrement: (itemId: string) =>
-        set((state: FavouriteState) => {
-          const updatedFavouriteItems = [...state.favouriteItems];
-          const itemIndex = updatedFavouriteItems.findIndex(
-            (item) => item.id.toString() === itemId
-          );
+      // handleDecrement: (itemId: string) =>
+      //   set((state: FavouriteState) => {
+      //     const updatedFavouriteItems = [...state.favouriteItems];
+      //     const itemIndex = updatedFavouriteItems.findIndex(
+      //       (item) => item.id.toString() === itemId
+      //     );
 
-          if (itemIndex !== -1) {
-            const updatedItem = {
-              ...updatedFavouriteItems[itemIndex],
-              quantity: Math.max(
-                updatedFavouriteItems[itemIndex].quantity - 1,
-                1
-              ),
-            };
-            updatedFavouriteItems[itemIndex] = updatedItem;
-            return { favouriteItems: updatedFavouriteItems };
-          }
+      //     if (itemIndex !== -1) {
+      //       const updatedItem = {
+      //         ...updatedFavouriteItems[itemIndex],
+      //         quantity: Math.max(
+      //           updatedFavouriteItems[itemIndex].quantity - 1,
+      //           1
+      //         ),
+      //       };
+      //       updatedFavouriteItems[itemIndex] = updatedItem;
+      //       return { favouriteItems: updatedFavouriteItems };
+      //     }
 
-          return state;
-        }),
-      handleIncrement: (itemId: string) =>
-        set((state: FavouriteState) => {
-          const updatedFavouriteItems = [...state.favouriteItems];
-          const itemIndex = updatedFavouriteItems.findIndex(
-            (item) => item.id.toString() === itemId
-          );
+      //     return state;
+      //   }),
+      // handleIncrement: (itemId: string) =>
+      //   set((state: FavouriteState) => {
+      //     const updatedFavouriteItems = [...state.favouriteItems];
+      //     const itemIndex = updatedFavouriteItems.findIndex(
+      //       (item) => item.id.toString() === itemId
+      //     );
 
-          if (itemIndex !== -1) {
-            const updatedItem = {
-              ...updatedFavouriteItems[itemIndex],
-              quantity: updatedFavouriteItems[itemIndex].quantity + 1,
-            };
-            updatedFavouriteItems[itemIndex] = updatedItem;
-            return { favouriteItems: updatedFavouriteItems };
-          }
+      //     if (itemIndex !== -1) {
+      //       const updatedItem = {
+      //         ...updatedFavouriteItems[itemIndex],
+      //         quantity: updatedFavouriteItems[itemIndex].quantity + 1,
+      //       };
+      //       updatedFavouriteItems[itemIndex] = updatedItem;
+      //       return { favouriteItems: updatedFavouriteItems };
+      //     }
 
-          return state;
-        }),
+      //     return state;
+      //   }),
       resetFavourite: () =>
         set({
           favouriteItems: [],

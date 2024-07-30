@@ -3,6 +3,7 @@ import { router, useLocalSearchParams } from "expo-router";
 import { shopData } from "@/constants/data";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
+  AntDesign,
   Entypo,
   Feather,
   FontAwesome,
@@ -13,10 +14,14 @@ import { Fee, formatNGNCurrency } from "@/helpers";
 import { CustomButton } from "@/components";
 import { useState } from "react";
 import { icons, images } from "@/constants";
+import useFavouriteStore from "@/store/favorite";
+import { Product } from "@/types";
+import Toast from "react-native-toast-message";
 
 const CheckoutScreen = () => {
   const { id } = useLocalSearchParams<{ id?: string }>();
   const [shippingMethod, setShippingMethod] = useState("Collection");
+  const { toggleFavourite, favouriteItems } = useFavouriteStore();
 
   const data = shopData.find((item) => item.id === id);
 
@@ -67,6 +72,21 @@ const CheckoutScreen = () => {
     },
   ];
 
+  const handleToggleFavourite = (product: Product) => {
+    const productWithQuantity = { ...product, quantity: 1 };
+
+    const isFavourite = favouriteItems.some((item) => item.id === product.id);
+
+    toggleFavourite(productWithQuantity);
+    Toast.show({
+      type: "success",
+      text1: isFavourite ? "Removed from Favourite" : "Added to Favourite",
+      visibilityTime: 1000,
+    });
+  };
+
+  const isFavourite = favouriteItems.some((item) => item.id === data.id);
+
   return (
     <SafeAreaView className="bg-white flex-1">
       <ScrollView
@@ -100,8 +120,12 @@ const CheckoutScreen = () => {
             </Text>
           </View>
           <View className="flex-row items-center justify-end space-x-5">
-            <TouchableOpacity>
-              <FontAwesome name="heart" size={24} color="black" />
+            <TouchableOpacity onPress={() => handleToggleFavourite(data)}>
+              {isFavourite ? (
+                <AntDesign name="heart" size={24} color="#FFCCCC" />
+              ) : (
+                <FontAwesome5 name="heart" size={24} color="#FFCCCC" />
+              )}
             </TouchableOpacity>
             <TouchableOpacity>
               <Feather name="share-2" size={24} color="black" />
