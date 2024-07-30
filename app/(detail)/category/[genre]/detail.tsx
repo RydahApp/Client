@@ -116,6 +116,12 @@ const GenreDetail = () => {
                 <Text className="text-base text-center font-normal text-black my-6">
                   Search result not found
                 </Text>
+                <CustomButton
+                      title="Go Back"
+                      containerStyles="bg-primary !w-fit py-3 !px-8 rounded-full"
+                      titleStyle="text-base font-medium text-black"
+                      handlePress={() => router.back()}
+                    />
               </View>
             )}
             // refreshControl={

@@ -18,26 +18,26 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { KeyboardAvoidingView } from "react-native";
 import { CustomButton } from "@/components";
 
-interface Tab {
+/* interface Tab {
   text: string;
   data: categoryItemType[];
   tabIcon: ImageSourcePropType | undefined;
-}
+} */
 
-const tabs: Tab[] = [
-  { text: "Items", tabIcon: icons.focusedCartIcon, data: categoryItem },
+// const tabs: Tab[] = [
+  // { text: "Items", tabIcon: icons.focusedCartIcon, data: categoryItem },
   // { text: "Members", tabIcon: icons.memberIcon, data: memberItem },
-];
+//];
 
 const CategoryScreen = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [tabData, setTabData] = useState<categoryItemType[]>(categoryItem);
-  const [categoryTab, setCategoryTab] = useState("Items");
+  // const [categoryTab, setCategoryTab] = useState("Items");
 
-  const handleTabChange = (tab: Tab) => {
+  /* const handleTabChange = (tab: Tab) => {
     setCategoryTab(tab.text);
     setTabData(tab.data);
-  };
+  }; */
 
   // const renderSearchItem = ({ item }: { item: categoryItemType }) => {
   //   if (categoryTab === "Items") {
@@ -89,7 +89,7 @@ const CategoryScreen = () => {
               />
             </TouchableOpacity>
           </View>
-          <View className="w-full flex-row items-center justify-between border-b border-[#E4E7EC] rounded-lg px-1">
+          {/* <View className="w-full flex-row items-center justify-between border-b border-[#E4E7EC] rounded-lg px-1">
             {tabs.map((tab) => (
               <TouchableOpacity
                 key={tab.text}
@@ -108,7 +108,7 @@ const CategoryScreen = () => {
                 </Text>
               </TouchableOpacity>
             ))}
-          </View>
+          </View> */}
           <View className="w-full">
             <View className="w-full">
               <FlatList
