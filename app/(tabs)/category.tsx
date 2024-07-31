@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { icons, images } from "@/constants";
-import { categoryItem, memberItem } from "@/constants/data";
+import { categoryItem } from "@/constants/data";
 import { categoryItemType } from "@/types";
-import { Entypo } from "@expo/vector-icons";
+import { Entypo, FontAwesome6 } from "@expo/vector-icons";
 import { router } from "expo-router";
 import {
   View,
   Text,
   TextInput,
   Image,
-  ImageSourcePropType,
   TouchableOpacity,
   FlatList,
   Platform,
@@ -18,36 +17,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { KeyboardAvoidingView } from "react-native";
 import { CustomButton } from "@/components";
 
-/* interface Tab {
-  text: string;
-  data: categoryItemType[];
-  tabIcon: ImageSourcePropType | undefined;
-} */
-
-// const tabs: Tab[] = [
-  // { text: "Items", tabIcon: icons.focusedCartIcon, data: categoryItem },
-  // { text: "Members", tabIcon: icons.memberIcon, data: memberItem },
-//];
-
 const CategoryScreen = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [tabData, setTabData] = useState<categoryItemType[]>(categoryItem);
-  // const [categoryTab, setCategoryTab] = useState("Items");
-
-  /* const handleTabChange = (tab: Tab) => {
-    setCategoryTab(tab.text);
-    setTabData(tab.data);
-  }; */
-
-  // const renderSearchItem = ({ item }: { item: categoryItemType }) => {
-  //   if (categoryTab === "Items") {
-  //     return ;
-  //   } else if (categoryTab === "Members") {
-  //     return <MemberTab item={item} />;
-  //   } else {
-  //     return null;
-  //   }
-  // };
 
   const filteredData = tabData
     ? (tabData as categoryItemType[]).filter((item) =>
@@ -89,26 +61,6 @@ const CategoryScreen = () => {
               />
             </TouchableOpacity>
           </View>
-          {/* <View className="w-full flex-row items-center justify-between border-b border-[#E4E7EC] rounded-lg px-1">
-            {tabs.map((tab) => (
-              <TouchableOpacity
-                key={tab.text}
-                onPress={() => handleTabChange(tab)}
-                className={`pb-4 flex-row items-center space-x-3 justify-center w-2/4 rounded-md transition-all duration-300 ${
-                  tab.text === categoryTab ? "bg-white border-b" : ""
-                }`}
-              >
-                <Image
-                  source={tab.tabIcon}
-                  alt={`${tab.text} icon`}
-                  resizeMode="contain"
-                />
-                <Text className="text-sm font-medium transition-all duration-300 text-black">
-                  {tab.text}
-                </Text>
-              </TouchableOpacity>
-            ))}
-          </View> */}
           <View className="w-full">
             <View className="w-full">
               <FlatList
@@ -124,7 +76,18 @@ const CategoryScreen = () => {
                       Search result not found
                     </Text>
                     <CustomButton
-                      title="Go Back"
+                      title={
+                        <View className="flex-row items-end justify-center space-x-2">
+                          <Text className="text-base text-primary font-medium">
+                            Go Back
+                          </Text>
+                          <FontAwesome6
+                            name="arrow-right-long"
+                            size={18}
+                            color="#ffcccc"
+                          />
+                        </View>
+                      }
                       containerStyles="bg-primary !w-fit py-3 !px-8 rounded-full"
                       titleStyle="text-base font-medium text-black"
                       handlePress={() => setSearchQuery("")}
@@ -160,27 +123,5 @@ const ItemsTab: React.FC<{ item: categoryItemType }> = ({ item }) => {
     </View>
   );
 };
-
-// const MemberTab: React.FC<{ item: categoryItemType }> = ({ item }) => {
-//   return (
-//     <View className="w-full flex-col items-start justify-start border bg-[#FFFAFA] p-4 border-primary rounded-md mb-3">
-//       <TouchableOpacity
-//         onPress={() => router.push(`/category/${item.category}/detail`)}
-//         className="w-full flex-row items-center justify-between rounded-lg"
-//       >
-//         <View className="flex-row items-center justify-start space-x-3">
-//           <Image
-//             source={item.icon}
-//             alt={`${item.title} icon`}
-//             resizeMode="contain"
-//           />
-//           <Text className="tex-sm font-medium text-grey-700">{item.title}</Text>
-//         </View>
-
-//         <Entypo name="chevron-thin-right" size={20} color="#4E4E4E" />
-//       </TouchableOpacity>
-//     </View>
-//   );
-// };
 
 export default CategoryScreen;

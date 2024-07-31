@@ -17,7 +17,7 @@ import { Product } from "@/types";
 import useFavouriteStore from "@/store/favorite";
 import Toast from "react-native-toast-message";
 import { formatGBPCurrency } from "@/helpers";
-import { AntDesign, Entypo, FontAwesome5 } from "@expo/vector-icons";
+import { AntDesign, Entypo, FontAwesome5, FontAwesome6 } from "@expo/vector-icons";
 import { CustomButton, RangeSlider } from "@/components";
 
 const GenreDetail = () => {
@@ -72,6 +72,13 @@ const GenreDetail = () => {
   return (
     <SafeAreaView className="flex-1 pt-4 bg-white">
       <View className="flex-col items-start justify-start space-y-6 w-full px-5">
+        <TouchableOpacity
+          onPress={() => router.back()}
+          className="flex-row items-center justify-start space-x-3"
+        >
+          <Entypo name="chevron-thin-left" size={20} color="#ffcccc" />
+          <Text className="text-base font-medium text-primary">Back</Text>
+        </TouchableOpacity>
         <Text className="text-3xl font-normal text-[#6B5656]">Search</Text>
         <View className="w-full relative">
           <TextInput
@@ -117,11 +124,22 @@ const GenreDetail = () => {
                   Search result not found
                 </Text>
                 <CustomButton
-                      title="Go Back"
-                      containerStyles="bg-primary !w-fit py-3 !px-8 rounded-full"
-                      titleStyle="text-base font-medium text-black"
-                      handlePress={() => router.back()}
-                    />
+                  title={
+                    <View className="flex-row items-end justify-center space-x-2">
+                      <Text className="text-base text-primary font-medium">
+                        Go Back
+                      </Text>
+                      <FontAwesome6
+                        name="arrow-right-long"
+                        size={18}
+                        color="#ffcccc"
+                      />
+                    </View>
+                  }
+                  containerStyles="bg-transparent !w-fit py-3 !px-8 rounded-full"
+                  titleStyle="text-base font-medium text-black"
+                  handlePress={() => router.back()}
+                />
               </View>
             )}
             // refreshControl={
