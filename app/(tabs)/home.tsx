@@ -17,7 +17,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView className="bg-white flex-1 pt-10">
-      <ScrollView style={{ paddingBottom: Platform.OS === "ios" ? 40 : 0 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: Platform.OS === "ios" ? 20 : 0 }}>
         <NavHeader />
         <View className="w-full pt-8 pb-4 pl-4 border-b border-[#F0F2F5]">
           <FlatList
