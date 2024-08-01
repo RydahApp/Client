@@ -1,7 +1,13 @@
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  FlatList,
+  Platform,
+} from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { FlatList } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { shopCategory, shopData } from "@/constants/data";
 import { NavHeader, ProductItem } from "@/components";
@@ -11,7 +17,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView className="bg-white flex-1 pt-10">
-      <ScrollView>
+      <ScrollView style={{ paddingBottom: Platform.OS === "ios" ? 40 : 0 }}>
         <NavHeader />
         <View className="w-full pt-8 pb-4 pl-4 border-b border-[#F0F2F5]">
           <FlatList
