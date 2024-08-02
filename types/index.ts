@@ -73,3 +73,11 @@ export interface sellItemFormType {
   condition: string;
   price: string;
 }
+
+export interface messageType {
+  id: string;
+  sender: string;
+  receiver: string;
+  content: string ;
+  is_read: boolean;
+}

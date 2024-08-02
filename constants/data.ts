@@ -285,3 +285,34 @@ export const brandData = [
     name: "Generic",
   },
 ];
+
+export const messagesData = [
+  {
+    id: "1",
+    sender: "John Doe",
+    receiver: "Seller",
+    content: "Hello! I have a question about your product.",
+    is_read: false,
+  },
+  {
+    id: "2",
+    sender: "Jane Smith",
+    receiver: "Seller",
+    content: "Is this item still available?",
+    is_read: false,
+  },
+  {
+    id: "3",
+    sender: "Paul Wilson",
+    receiver: "Seller",
+    content: "Can you provide more details?",
+    is_read: true,
+  },
+  {
+    id: "4",
+    sender: "Seller",
+    receiver: "Customer",
+    content: "https://via.placeholder.com/150",
+    is_read: false,
+  },
+];
