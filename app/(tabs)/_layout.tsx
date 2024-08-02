@@ -1,7 +1,14 @@
-import { View, Text, Image, ImageSourcePropType } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  ImageSourcePropType,
+  TouchableOpacity,
+} from "react-native";
 import { Tabs } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { icons } from "@/constants";
+import { useLinkTo } from "@react-navigation/native";
 
 type tabIconType = {
   icon: ImageSourcePropType | undefined;
@@ -21,6 +28,7 @@ const TabIcon = ({ icon, color, name }: tabIconType) => (
 );
 
 const TabLayout = () => {
+  const linkTo = useLinkTo();
   return (
     <>
       <Tabs
@@ -79,6 +87,15 @@ const TabLayout = () => {
                 icon={focused ? icons.focusedCartIcon : icons.cartIcon}
                 color={color}
                 name="Sell"
+              />
+            ),
+            tabBarButton: (props) => (
+              <TouchableOpacity
+                {...props}
+                onPress={(e) => {
+                  e.preventDefault();
+                  linkTo("/(modal)/sellmodal");
+                }}
               />
             ),
           }}

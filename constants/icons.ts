@@ -24,6 +24,13 @@ const holderIcon = require("@/assets/icons/holderIcon.png");
 const filterIcon = require("@/assets/icons/filterIcon.png");
 const memberIcon = require("@/assets/icons/memberIcon.png");
 const messageIcon = require("@/assets/icons/messageIcon.png");
+const successUploadIcon = require("@/assets/icons/successUploadIcon.png");
+const errorUploadIcon = require("@/assets/icons/errorUploadIcon.png");
+const noMessageIcon = require("@/assets/icons/noMessageIcon.png");
+const uploadClickIcon = require("@/assets/icons/uploadClickIcon.png");
+const uploadingImageIcon = require("@/assets/icons/uploadingImageIcon.png");
+const trashIcon = require("@/assets/icons/trashIcon.png");
+const retryIcon = require("@/assets/icons/retryIcon.png");
 
 export default {
   appleIcon,
@@ -52,4 +59,11 @@ export default {
   focusedHomeIcon,
   focusedMessageIcon,
   focusedCartIcon,
+  successUploadIcon,
+  errorUploadIcon,
+  noMessageIcon,
+  uploadClickIcon,
+  uploadingImageIcon,
+  trashIcon,
+  retryIcon
 };

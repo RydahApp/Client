@@ -50,6 +50,7 @@ export default function RootLayout() {
         <Stack.Screen name="(auth)" options={{ headerShown: false }} />
         <Stack.Screen name="(checkout)" options={{ headerShown: false }} />
         <Stack.Screen name="(detail)" options={{ headerShown: false }} />
+        <Stack.Screen name="(modal)" options={{ headerShown: false }} />
         <Stack.Screen name="(favourites)" options={{ headerShown: false }} />
       </Stack>
       <Toast />

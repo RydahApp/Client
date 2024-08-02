@@ -17,6 +17,7 @@ type FormType = {
   multiline?: boolean;
   numberOfLines?: number;
   maxLength?: number;
+  style?: any;
 };
 
 const FormField: React.FC<FormType> = ({
@@ -34,6 +35,7 @@ const FormField: React.FC<FormType> = ({
   numberOfLines,
   inputStyle,
   maxLength,
+  style,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -47,7 +49,7 @@ const FormField: React.FC<FormType> = ({
         testID="input-container"
       >
         <TextInput
-          className={`flex-1 placeholder:text-[#98A2B3] text-dark font-normal text-base h-full w-full ${inputStyle}`}
+          className={`flex-1 placeholder:text-[#98A2B3] text-dark font-normal text-sm h-full w-full ${inputStyle}`}
           value={value}
           placeholder={placeholder}
           placeholderTextColor="#98A2B3"
@@ -59,6 +61,7 @@ const FormField: React.FC<FormType> = ({
           numberOfLines={numberOfLines}
           maxLength={maxLength}
           testID="text-input"
+          style={style}
         />
         {type === "Password" && (
           <TouchableOpacity

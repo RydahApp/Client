@@ -8,21 +8,8 @@ jest.mock("expo-router", () => ({
   },
 }));
 
-// jest.mock("@/constants", () => ({
-//   icons: {
-//     avatarIcon: "@/assets/icons/avatarIcon.png",
-//   },
-// }));
 
 describe("NavHeader Component", () => {
-  // it("renders correctly", () => {
-  //   const { getByText, getByTestId } = render(<NavHeader />);
-
-  //   expect(getByText("Aisha Uthman")).toBeTruthy();
-  //   expect(getByText("Aisha Ventures")).toBeTruthy();
-  //   expect(getByTestId("profile-avatar")).toBeTruthy();
-  // });
-
   it("navigates to notification screen on bell icon press", () => {
     const { getByTestId } = render(<NavHeader />);
 

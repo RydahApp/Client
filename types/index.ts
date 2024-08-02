@@ -58,3 +58,18 @@ export interface categoryItemType {
   category: string;
   price: number;
 }
+
+export interface ImageType {
+  uri: string;
+  name: string;
+  type: string;
+}
+
+export interface sellItemFormType {
+  images: ImageType[];
+  item_name: string;
+  item_description: string;
+  brand: string;
+  condition: string;
+  price: string;
+}
