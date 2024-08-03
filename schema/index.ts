@@ -44,3 +44,15 @@ export const creditFormSchema = yup.object().shape({
   expiry_date: yup.string().required("Required"),
   cvv: yup.string().required("Required"),
 });
+
+export const sellFormSchema = yup
+  .object()
+  .shape({
+    item_name: yup.string().required("item name is required"),
+    item_description: yup.string().required("item description is required"),
+    brand: yup.string().required("Brand is required"),
+    condition: yup.string().required("Condition is required"),
+    price: yup.number()
+      .required("Price is required")
+      .positive("Price must be positive"),
+  });
