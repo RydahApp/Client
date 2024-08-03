@@ -78,6 +78,7 @@ export interface messageType {
   id: string;
   sender: string;
   receiver: string;
-  content: string ;
+  content: string;
   is_read: boolean;
+  offerStatus?: "pending" | "approved" | "rejected";
 }

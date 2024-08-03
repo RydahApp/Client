@@ -32,6 +32,9 @@ const uploadingImageIcon = require("@/assets/icons/uploadingImageIcon.png");
 const trashIcon = require("@/assets/icons/trashIcon.png");
 const retryIcon = require("@/assets/icons/retryIcon.png");
 const sendIcon = require("@/assets/icons/sendIcon.png");
+const approvedOfferIcon = require("@/assets/icons/approvedOfferIcon.png");
+const rejectedOfferIcon = require("@/assets/icons/rejectedOfferIcon.png");
+const pendingOfferIcon = require("@/assets/icons/pendingOfferIcon.png");
 
 export default {
   appleIcon,
@@ -68,4 +71,7 @@ export default {
   trashIcon,
   retryIcon,
   sendIcon,
+  approvedOfferIcon,
+  rejectedOfferIcon,
+  pendingOfferIcon,
 };

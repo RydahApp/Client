@@ -6,7 +6,6 @@ import {
   AntDesign,
   Entypo,
   Feather,
-  FontAwesome,
   FontAwesome5,
   MaterialIcons,
 } from "@expo/vector-icons";

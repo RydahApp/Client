@@ -17,6 +17,10 @@ const CheckoutLayout = () => {
           name="checkout/success"
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="offer/buyer/[id]"
+          options={{ headerShown: false }}
+        />
       </Stack>
       <StatusBar backgroundColor="#FFFFFF" style="dark" />
     </>
