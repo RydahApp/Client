@@ -237,7 +237,7 @@ const ProductdetailScreen = () => {
               />
               <View className="flex-col items-start justify-start space-y-2">
                 <Text className="text-xs font-medium text-[#594747]">
-                  Buy protection fee <Text className="font-bold">(₦ 500)</Text>
+                  Buy protection fee <Text className="font-bold">({formatGBPCurrency(Fee)})</Text>
                 </Text>
                 <Text className="text-[10px] font-medium text-[#98A2B3] max-w-[161px]">
                   This serves as a protection fee for your orders in case of
@@ -269,7 +269,7 @@ const ProductdetailScreen = () => {
               containerStyles="bg-primary py-3 mb-3 w-full"
             />
             <CustomButton
-              handlePress={() => router.push(`/home`)}
+              handlePress={() => router.push(`/offer/buyer/${data.id}`)}
               title={
                 <View className="flex-row items-center justify-center space-x-2 w-full">
                   <Image

@@ -11,11 +11,18 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useEffect, useRef, useState } from "react";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { messagesData } from "@/constants/data";
-import { messageType } from "@/types";
+import { messagesData, shopData } from "@/constants/data";
+import { messageType, Product } from "@/types";
 import { icons } from "@/constants";
 import * as ImagePicker from "expo-image-picker";
-import { Fontisto, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  FontAwesome6,
+  Fontisto,
+  Ionicons,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
+import { Fee, formatGBPCurrency } from "@/helpers";
+import { CustomButton } from "@/components";
 
 const MessagedetailScreen = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -31,6 +38,38 @@ const MessagedetailScreen = () => {
     null
   );
   const flatListRef = useRef<FlatList>(null);
+  const [offerStatus, setOfferStatus] = useState("Pending");
+
+  const renderStatus = (status: string) => {
+    switch (status) {
+      case "Pending":
+        return (
+          <Image
+            source={icons.pendingOfferIcon}
+            alt="Pending offer"
+            resizeMode="contain"
+          />
+        );
+      case "Approved":
+        return (
+          <Image
+            source={icons.approvedOfferIcon}
+            alt="Approved offer"
+            resizeMode="contain"
+          />
+        );
+      case "Rejected":
+        return (
+          <Image
+            source={icons.rejectedOfferIcon}
+            alt="Rejected offer"
+            resizeMode="contain"
+          />
+        );
+      default:
+        return null;
+    }
+  };
 
   const handleSend = () => {
     if (newMessage.trim() || selectedImage) {
@@ -53,8 +92,24 @@ const MessagedetailScreen = () => {
     }
   };
 
+  const handleOfferResponse = (
+    messageId: string,
+    status: "approved" | "rejected"
+  ) => {
+    setMessages((prevMessages) =>
+      prevMessages.map((message) =>
+        message.id === messageId ? { ...message, offerStatus: status } : message
+      )
+    );
+  };
+
   const renderMessage = ({ item }: { item: messageType }) => {
     const messageParts = item.content.split("\n");
+    const isOfferMessage = item.content.startsWith("New Offer");
+    const productId = isOfferMessage ? item.content.split(" ")[2] : null;
+    const productData: Product | any = productId
+      ? shopData.find((item) => item.id === productId)
+      : {};
 
     return (
       <View
@@ -63,40 +118,97 @@ const MessagedetailScreen = () => {
             ? "self-end bg-primary"
             : "self-start bg-gray-200"
         } p-2 rounded`}
-        style={{ maxWidth: "80%" }}
+        style={{ maxWidth: "90%" }}
       >
-        {messageParts.map((part, index) => {
-          if (part.startsWith("http")) {
-            console.log(part);
-            return (
-              <Image
-                key={index}
-                source={{ uri: part }}
-                style={{
-                  width: 150,
-                  height: 150,
-                  borderRadius: 8,
-                  marginTop: 4,
-                }}
+        {isOfferMessage && productData && (
+          <>
+            <Image
+              source={productData.product_image}
+              style={{
+                width: 250,
+                height: 160,
+                borderTopRightRadius: 8,
+                borderTopLeftRadius: 8,
+                marginBottom: 10,
+              }}
+            />
+            <Text className="text-sm font-normal text-black">
+              {productData.title}
+            </Text>
+            <View className="w-full flex-row items-start justify-start my-2">
+              {renderStatus(offerStatus)}
+            </View>
+            <Text>Buyer's name: John doe</Text>
+            <Text>Price: {formatGBPCurrency(productData.price)}</Text>
+            <View>
+              <CustomButton
+                title={
+                  <View className="flex-row items-center justify-start space-x-2 w-full">
+                    <Text className="text-sm text-black font-normal">
+                      Price:
+                    </Text>
+                    <Text className="text-lg font-bold text-black">
+                      {formatGBPCurrency(productData.price + Fee)}
+                    </Text>
+                  </View>
+                }
+                titleStyle="font-semibold"
+                containerStyles="bg-primary py-3 my-3 w-full !justify-start !px-4"
               />
-            );
-          } else if (part.startsWith("file://")) {
-            return (
-              <Image
-                key={index}
-                source={{ uri: part }}
-                style={{
-                  width: 150,
-                  height: 150,
-                  borderRadius: 8,
-                  marginTop: 4,
-                }}
-              />
-            );
-          } else {
-            return <Text key={index}>{part}</Text>;
-          }
-        })}
+            </View>
+            <CustomButton
+              handlePress={() =>
+                router.push(`/checkout/${productData.id}/payment`)
+              }
+              title={
+                <View className="flex-row items-center justify-center space-x-2">
+                  <Text className="text-sm text-black font-medium">
+                    Proceed to make Payment
+                  </Text>
+                  <FontAwesome6
+                    name="arrow-right-long"
+                    size={14}
+                    color="black"
+                  />
+                </View>
+              }
+              containerStyles="bg-primary p-3  my-4 w-full"
+            />
+          </>
+        )}
+        {messageParts &&
+          !isOfferMessage &&
+          messageParts.map((part, index) => {
+            if (part.startsWith("http")) {
+              return (
+                <Image
+                  key={index}
+                  source={{ uri: part }}
+                  style={{
+                    width: 150,
+                    height: 150,
+                    borderRadius: 8,
+                    marginTop: 4,
+                  }}
+                />
+              );
+            } else if (part.startsWith("file://")) {
+              return (
+                <Image
+                  key={index}
+                  source={{ uri: part }}
+                  style={{
+                    width: 150,
+                    height: 150,
+                    borderRadius: 8,
+                    marginTop: 4,
+                  }}
+                />
+              );
+            } else {
+              return <Text key={index}>{part}</Text>;
+            }
+          })}
       </View>
     );
   };
@@ -144,6 +256,7 @@ const MessagedetailScreen = () => {
           onContentSizeChange={() =>
             flatListRef.current?.scrollToEnd({ animated: true })
           }
+          showsVerticalScrollIndicator={false}
           onLayout={() => flatListRef.current?.scrollToEnd({ animated: true })}
         />
         <View className="relative">
