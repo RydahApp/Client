@@ -7,22 +7,14 @@ type tabIconType = {
   icon: ImageSourcePropType | undefined;
   color: string;
   name: string;
-  focused: boolean;
 };
 
-const TabIcon = ({ icon, color, name, focused }: tabIconType) => (
+const TabIcon = ({ icon, color, name }: tabIconType) => (
   <View
-    className={`items-center justify-center space-y-1 ${
-      focused ? "bg-primary w-14 h-14 rounded-full mb-6" : ""
-    } transition-all duration-300`}
+    className={`items-center justify-center space-y-1 transition-all duration-300`}
   >
     <Image source={icon} resizeMode="contain" tintColor={color} />
-    <Text
-      className={`${
-        focused ? "hidden" : "block"
-      } text-sm font-normal`}
-      style={{ color: color }}
-    >
+    <Text className={`text-sm font-normal`} style={{ color: color }}>
       {name}
     </Text>
   </View>
@@ -34,13 +26,13 @@ const TabLayout = () => {
       <Tabs
         screenOptions={{
           tabBarShowLabel: false,
-          tabBarActiveTintColor: "#000000",
+          tabBarActiveTintColor: "#FFCCCC",
           tabBarInactiveTintColor: "#000000",
           tabBarStyle: {
             backgroundColor: "#FFFFFF",
             borderTopLeftRadius: 24,
             borderTopRightRadius: 24,
-            height: 98,
+            height: 80,
             shadowColor: "#10192812",
             shadowOffset: { width: 0, height: -7 },
             shadowOpacity: 0.3,
@@ -59,7 +51,6 @@ const TabLayout = () => {
                 icon={focused ? icons.focusedHomeIcon : icons.homeIcon}
                 color={color}
                 name="Home"
-                focused={focused}
               />
             ),
           }}
@@ -69,12 +60,11 @@ const TabLayout = () => {
           options={{
             title: "Categories",
             headerShown: false,
-            tabBarIcon: ({ color, focused }) => (
+            tabBarIcon: ({ color }) => (
               <TabIcon
                 icon={icons.searchIcon}
                 color={color}
                 name="Categories"
-                focused={focused}
               />
             ),
           }}
@@ -89,7 +79,6 @@ const TabLayout = () => {
                 icon={focused ? icons.focusedCartIcon : icons.cartIcon}
                 color={color}
                 name="Sell"
-                focused={focused}
               />
             ),
           }}
@@ -104,7 +93,6 @@ const TabLayout = () => {
                 icon={focused ? icons.focusedMessageIcon : icons.messageIcon}
                 color={color}
                 name="Messages"
-                focused={focused}
               />
             ),
           }}
@@ -119,7 +107,6 @@ const TabLayout = () => {
                 icon={focused ? icons.avatarIcon : icons.profileIcon}
                 color={color}
                 name="Profile"
-                focused={focused}
               />
             ),
           }}
