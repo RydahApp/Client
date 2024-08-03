@@ -14,6 +14,7 @@ const DetailLayout = () => {
           name="notification/notify"
           options={{ headerShown: false }}
         />
+        <Stack.Screen name="message/[id]" options={{ headerShown: false }} />
       </Stack>
       <StatusBar backgroundColor="#fff" style="dark" />
     </>
