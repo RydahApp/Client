@@ -7,6 +7,9 @@ const request = {
     create_user_profile: "/auth/create-userprofile/",
     token: "/api/token/refresh/",
     logout: "/auth/logout/",
+    forgetpassword: "/auth/reset-password-request/",
+    resetotp: "/auth/reset-verify-otp/",
+    resetpassword: "/auth/reset-set-new-password/",
   },
 };
 

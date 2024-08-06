@@ -3,6 +3,7 @@ import {
   forgetFormValueType,
   otpFormValueType,
   personalFormValueType,
+  resetFormValueType,
 } from "@/types";
 import { Axios } from "../config";
 import request from "../request";
@@ -60,7 +61,44 @@ export const loginUser = async (payload: authFormValueType) => {
 // Function to create a user profile
 export const createUserProfile = async (payload: personalFormValueType) => {
   try {
-    const response = await Axios.post(request.auth.create_user_profile, payload);
+    const response = await Axios.post(
+      request.auth.create_user_profile,
+      payload
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// Function to forget password
+export const forgetPassword = async (payload: forgetFormValueType) => {
+  try {
+    const response = await Axios.post(request.auth.forgetpassword, payload);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// Function to forget password
+export const resetPassword = async (payload: resetFormValueType) => {
+  try {
+    const response = await Axios.patch(request.auth.resetpassword, payload);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// Function to reset otp verify
+export const resetOtpVerify = async (query: otpFormValueType) => {
+  try {
+    const response = await Axios.get(request.auth.resetotp, {
+      params: {
+        query,
+      },
+    });
     return response.data;
   } catch (error) {
     throw error;

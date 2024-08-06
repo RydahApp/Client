@@ -30,8 +30,9 @@ export interface forgetFormValueType {
 }
 
 export interface resetFormValueType {
-  password: string;
+  password?: string;
   confirm_password?: string;
+  email?: string;
 }
 
 export interface creditCardFormValueType {

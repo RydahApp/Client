@@ -44,7 +44,7 @@ const VerifyEmailCodeScreen = () => {
       setSending(false);
       return response;
     } catch (error: any) {
-      const errorMessage = getErrorMessage(error, "Otp Error");
+      const errorMessage = getErrorMessage(error, "Incorrect OTP, Check and retry");
       Toast.show({
         type: "error",
         text1: errorMessage,
@@ -90,7 +90,7 @@ const VerifyEmailCodeScreen = () => {
         await resendEmailOtpVerify({ email: code });
         Toast.show({
           type: "success",
-          text1: "Otp code sent",
+          text1: "We’ve sent you 4-digit code to your Mail",
           position: "top",
         });
         setResendCountdown(90);
