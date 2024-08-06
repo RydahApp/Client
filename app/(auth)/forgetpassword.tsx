@@ -76,7 +76,7 @@ const ForgetPasswordScreen = () => {
                   touched.email && errors.email ? "!border-red-500" : ""
                 } pl-[45px]`}
               />
-              <View className="flex-row items-center justify-start space-x-2 absolute top-[66%] left-[6%]">
+              <View className="flex-row items-center justify-start space-x-2 absolute top-[66%] left-[16px]">
                 <Image source={icons.mailIcon} resizeMode="contain" />
               </View>
             </View>
